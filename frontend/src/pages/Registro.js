@@ -34,17 +34,19 @@ function Registro() {
                     })
                     .then(() => {
                         alert("Se registró correctamente");
+                        window.location.href = "/";
                     })
                     .catch(() => {
                         alert("Hubo un error durante el registro");
-                    });
+                    })
                 }
             })
-            .catch(error => {
-                console.error("Error al verificar el correo electrónico:", error);
-                alert("Hubo un error al verificar el correo electrónico");
-            });
-    }
+            
+
+            
+
+
+    };
     
 
     return (
