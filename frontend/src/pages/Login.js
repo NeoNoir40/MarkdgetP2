@@ -1,10 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 
 function Login() {
+
+
+
     return (
         <main>
             <Encabezado />
