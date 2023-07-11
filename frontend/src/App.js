@@ -36,6 +36,7 @@ import SalirCuenta from './pages/SalirCuenta';
 import RoboCuenta from './pages/RoboCuenta';
 import CargoDesc from './pages/CargoDesc';
 import PierdoTelef from './pages/PierdoTelef';
+import CrearCategoria from './pages/CrearCategoria';
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
   <Route path='/RoboCuenta' element={<RoboCuenta/>}></Route>
   <Route path='/CargoDesc' element={<CargoDesc/>}></Route>
   <Route path='/PierdoTelef' element={<PierdoTelef/>}></Route>
+  <Route path='/CrearCategoria' element={<CrearCategoria/>}></Route>
 </Routes>
 </BrowserRouter>
 
