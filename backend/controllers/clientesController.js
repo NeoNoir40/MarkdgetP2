@@ -12,7 +12,7 @@ const crearCliente = (req, res) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al buscar el cliente' });
     } else if (resultados.length > 0) {
-      res.status(400).json({ error: 'El correo ya ha sido registrado' });
+      res.status(400).json(["El correo ya ha sido registrado"]);
     } else {
       db.query(
         'INSERT INTO clientes (nombre, email, contrasena, direccion, ciudad, estado, pais) VALUES (?, ?, ?, ?, ?, ?, ?)',
