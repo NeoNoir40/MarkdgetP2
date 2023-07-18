@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Contacto from './components/Contacto';
 import Encabezado from './components/Encabezado';

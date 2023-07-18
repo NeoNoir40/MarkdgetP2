@@ -3,6 +3,7 @@ import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 import IndicadorPag from "../components/PagIndicador";
+import Axios from 'axios'
 import { useState } from "react";
 
 function CrearProducto() {
