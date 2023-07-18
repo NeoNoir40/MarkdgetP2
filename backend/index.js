@@ -1,11 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 3001;
 
 // Middleware
+app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
+
+
+
+
 
 // Rutas
 const categoriasRoutes = require('./routes/categoriasRoutes');
