@@ -54,7 +54,7 @@ function Login() {
                             }}
                             />
                             <label htmlFor="contraseña">Contraseña</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="contrasena" name="contrasena" id="passwrd" required placeholder="Contraseña" 
+                            <input className="w-80 h-10 rounded-md text-black" type="password" name="contrasena" id="passwrd" required placeholder="Contraseña" 
                             onChange={(event) => {
 
                                 setContrasena(event.target.value);
