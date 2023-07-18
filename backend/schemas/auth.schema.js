@@ -1,7 +1,7 @@
 const { z } = require('zod');
 
 const registerSchema = z.object({
-    username: z.string({ required_error: 'Usuario requerido' }),
+    username: z.string({ required_error: 'Campo obligatorio'}),
     email: z.string({ required_error: 'Campo obligatorio' }).email({ required_error: 'Email inválido' }),
     contrasena: z.string({ required_error: 'Campo obligatorio' }).min(8, { message: 'La contraseña debe tener al menos 8 caracteres' }),
     direccion: z.string({ required_error: 'Campo obligatorio' }),

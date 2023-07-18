@@ -7,9 +7,9 @@ const {registerSchema, loginSchema}= require ('../schemas/auth.schema.js');
 
 router.get('/profile',clientesController.AuthReq,clientesController.profile);
 // Crear un nuevo cliente
-router.post('/',validateSchema(), clientesController.crearCliente); 
+router.post('/',validateSchema(registerSchema), clientesController.crearCliente); 
 // Obtener todos los clientes
-router.get('/', clientesController.obtenerClientes); 
+router.get('/',validateSchema(loginSchema),clientesController.obtenerClientes); 
 // Obtener un cliente por su ID
 router.get('/:id', clientesController.obtenerClientePorId); 
 // Actualizar un cliente existente
