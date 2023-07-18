@@ -3,13 +3,17 @@ import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 import { useForm } from 'react-hook-form';
-import { registerRequest } from '../api/auth'
-
+import { useAuth } from "../context/AuthContext";
 
 
 function Registro() {
 
     const { register, handleSubmit } = useForm()
+const {signup} = useAuth()
+
+  const onSubmit = handleSubmit(async (values) => {
+       signup(values)
+    })
 
     return (
         <main>
@@ -21,11 +25,8 @@ function Registro() {
                 <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg">
                     <h1 className="font-bold text-white "><box-icon name='user' color='#ffffff' ></box-icon>Registro</h1>
 
-                    <form onSubmit={handleSubmit(async (values) => {
-                        console.log(values);
-                        const res = await registerRequest(values)
-                        console.log(res)
-                    })}>
+                    <form onSubmit={onSubmit}
+                    >
 
                         <div className="text-white flex flex-col ">
 

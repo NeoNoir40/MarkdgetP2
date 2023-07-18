@@ -37,11 +37,13 @@ import RoboCuenta from './pages/RoboCuenta';
 import CargoDesc from './pages/CargoDesc';
 import PierdoTelef from './pages/PierdoTelef';
 import CrearCategoria from './pages/CrearCategoria';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
 
 
+<AuthProvider>
 <BrowserRouter>
 <Routes>
   <Route path='/'element={<Inicio/>} ></Route>
@@ -81,6 +83,7 @@ function App() {
   <Route path='/CrearCategoria' element={<CrearCategoria/>}></Route>
 </Routes>
 </BrowserRouter>
+</AuthProvider>
 
   );
 }
