@@ -62,10 +62,25 @@ const eliminarCategoria = (req, res) => {
   });
 };
 
+const AuthReq = (req, res, next) => {
+  const { token } = req.cookies;
+
+  if (!token) return res.status(401).json({ message: "Sin token, autorizacion denegada" });
+
+  jwt.verify(token, tokenSecret, (err, user) => {
+    if (err) return res.status(403).json({ message: "Token no valido" });
+
+    // El objeto decodificado del token se almacena en la variable 'user'
+    req.user = user
+
+    next();
+  });
+};
+
 module.exports = {
   obtenerCategorias,
   obtenerCategoriaPorId,
   crearCategoria,
   actualizarCategoria,
-  eliminarCategoria,
+  eliminarCategoria,AuthReq,
 };

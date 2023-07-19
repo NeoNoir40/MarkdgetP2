@@ -105,7 +105,7 @@ const login = (req, res) => {
          
         res.json({ mensaje: 'Inicio de sesión exitoso', token: token });
       } else {
-        res.status(401).json({ error: 'Credenciales inválidas' });
+        res.status(401).json({ error: 'Contraseña incorrecta' });
       }
     }
   });
@@ -163,6 +163,32 @@ const AuthReq = (req, res, next) => {
   });
 };
 
+const verifyToken = async (req, res) => {
+  const { token } = req.cookies;
+  if (!token) return res.send(false);
+
+  jwt.verify(token, TOKEN_SECRET, async (error, user) => {
+    if (error) return res.sendStatus(401);
+
+    db.query('SELECT * FROM users WHERE id = ?', [user.id], async (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
+      } else if (results.length === 0) {
+        res.sendStatus(401);
+      } else {
+        const userFound = results[0];
+
+        return res.json({
+          id: userFound.id,
+          username: userFound.username,
+          email: userFound.email,
+          // Otros datos del usuario que se deseen incluir en la respuesta
+        });
+      }
+    });
+  });
+};
+
 
 module.exports = {
   crearCliente,
@@ -174,5 +200,6 @@ module.exports = {
   logout,
   profile,
   AuthReq,
+  verifyToken,
   
 };

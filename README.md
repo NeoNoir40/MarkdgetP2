@@ -71,5 +71,6 @@ npm install axios
 
 npm install react-hook-form
 
+npm i js-cookie
 
 Listo seria todo por el momento.

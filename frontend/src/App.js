@@ -38,6 +38,7 @@ import CargoDesc from './pages/CargoDesc';
 import PierdoTelef from './pages/PierdoTelef';
 import CrearCategoria from './pages/CrearCategoria';
 import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   return (
@@ -48,25 +49,14 @@ function App() {
 <Routes>
   <Route path='/'element={<Inicio/>} ></Route>
 
-  <Route path='/Carrito' element={<Carrito/>}></Route>
+  
+  
   <Route path='/Login' element={<Login/>}></Route>
   <Route path='/Registro' element={<Registro/>}></Route>
-  <Route path='/RecuperContraseña' element={<RecuperContraseña/>}></Route>
-  <Route path='/Perfil' element={<Perfil/>}></Route>
   <Route path='/Nosotros' element={<Nosotros/>}></Route>
   <Route path='/Contacto' element={<Contacto/>}></Route>
   <Route path='/Productos' element={<Productos/>}></Route>
-  <Route path='/Pasarela_Pago' element={<Pasarela_pago/>}></Route>
-  <Route path='/Perfil_vendedor' element={<Perfil_vendedor/>}></Route>
-  <Route path='/Ayuda' element={<Ayuda/>}></Route>
-  <Route path='/Config_cuenta' element={<ConfiCuenta/>}></Route>
-  <Route path='/Seguridad' element={<Seguridad/>}></Route>
   <Route path='/VistaProducto' element={<VistaProducto/>}></Route>
-  <Route path='/AdministrarProductos' element={<AdministrarProductos/>}></Route>
-  <Route path='/EditarProducto' element={<EditarProducto/>}></Route>
-  <Route path='/CrearProducto' element={<CrearProducto/>}></Route>
-  <Route path='/EditarUsuario' element={<EditarUsuario/>}></Route>
-  <Route path='/EditarAdministrador' element={<EditarAdministrador/>}></Route>
   <Route path='/CategoriaCelular' element={<CategoriaCelular/>} ></Route>
   <Route path='/CategoriaLaptop' element={<CategoriaLaptop/>}></Route>
   <Route path='/CategoriaMonitores' element={<CategoriaMonitores/>}></Route>
@@ -74,6 +64,21 @@ function App() {
   <Route path='/CategoriaTablet' element={<CategoriaTablet/>}></Route>
   <Route path='/CategoriaAuricular' element={<CategoriaAuricular/>}></Route>
   <Route path='/CategoriaSmartwatch' element={<CategoriaSmartwatch/>}></Route>
+
+ <Route element={<ProtectedRoute/>}>
+ <Route path='/Carrito' element={<Carrito/>}></Route>
+  <Route path='/RecuperContraseña' element={<RecuperContraseña/>}></Route>
+  <Route path='/Perfil' element={<Perfil/>}></Route>
+  <Route path='/Pasarela_Pago' element={<Pasarela_pago/>}></Route>
+  <Route path='/Perfil_vendedor' element={<Perfil_vendedor/>}></Route>
+  <Route path='/Ayuda' element={<Ayuda/>}></Route>
+  <Route path='/Config_cuenta' element={<ConfiCuenta/>}></Route>
+  <Route path='/Seguridad' element={<Seguridad/>}></Route>
+  <Route path='/AdministrarProductos' element={<AdministrarProductos/>}></Route>
+  <Route path='/EditarProducto' element={<EditarProducto/>}></Route>
+  <Route path='/CrearProducto' element={<CrearProducto/>}></Route>
+  <Route path='/EditarUsuario' element={<EditarUsuario/>}></Route>
+  <Route path='/EditarAdministrador' element={<EditarAdministrador/>}></Route>
   <Route path='/VistaCanceRemb' element={<VistaCanRem/>}></Route>
   <Route path='/CamCorreo' element={<CamCorreo/>}></Route>
   <Route path='/SalirCuenta' element={<SalirCuenta/>}></Route>
@@ -81,6 +86,7 @@ function App() {
   <Route path='/CargoDesc' element={<CargoDesc/>}></Route>
   <Route path='/PierdoTelef' element={<PierdoTelef/>}></Route>
   <Route path='/CrearCategoria' element={<CrearCategoria/>}></Route>
+ </Route>
 </Routes>
 </BrowserRouter>
 </AuthProvider>
