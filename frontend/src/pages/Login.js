@@ -16,7 +16,7 @@ function Login() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/");
+            navigate("");
         }
     }, [isAuthenticated, navigate]);
 

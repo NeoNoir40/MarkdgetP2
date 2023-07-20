@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [errors, setErrors] = useState([]);
-    const [loading ,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const signup = async (user) => {
         try {
             const res = await registerRequest(user)
@@ -50,7 +50,10 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkLogin = async () => {
             const cookies = Cookies.get();
+            console.log('Cookies:', cookies);
+
             if (!cookies.token) {
+                console.log('Token no encontrado en cookies');
                 setIsAuthenticated(false);
                 setLoading(false);
                 return;
@@ -58,12 +61,18 @@ export const AuthProvider = ({ children }) => {
 
             try {
                 const res = await verifyTokenRequest(cookies.token);
-                console.log(res);
-                if (!res.data) return setIsAuthenticated(false);
+                console.log('Respuesta del servidor:', res);
+
+                if (!res.data) {
+                    console.log('Respuesta del servidor sin datos');
+                    return setIsAuthenticated(false);
+                }
+
                 setIsAuthenticated(true);
                 setUser(res.data);
                 setLoading(false);
             } catch (error) {
+                console.log('Error al verificar token:', error);
                 setIsAuthenticated(false);
                 setLoading(false);
             }
