@@ -7,11 +7,6 @@ import { useState } from "react";
 
 function CrearProducto() {
 
-const addProducto = () =>{
-    Axios.post("http://localhost:3001/api/productos" ,{
-
-    })
-}
 
     return (
 

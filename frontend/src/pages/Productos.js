@@ -2,6 +2,7 @@ import React from "react";
 import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import CirculoCategoria from "../components/CirculoCategoria";
+import { useEffect, useState } from "react";
 import celular from '../img/celular.png';
 import laptop from '../img/laptop.png';
 import monitor from '../img/monitor.webp';
@@ -20,18 +21,44 @@ import CardOfert from "../components/CardOfert";
 import pc from "../img/pc.avif";
 import gaming from "../img/gaming.webp"
 import IndicadorPag from "../components/PagIndicador";
+import axios from "axios";
 
 function Productos() {
+
+    const [categorias, setCategorias] = useState([])
+    
+    useEffect(function (){
+        axios
+        .get("http://localhost:3001/api/categorias")
+        .then(function (datos) {
+            setCategorias(datos.data);
+        })
+        .catch(() => {
+            console.error("Hay un error")
+        });
+    },[]);
+
     return (
 
         <main className="bgmain min-h-screen">
             <Encabezado />
             <div className="min-h-screen">
-                <div className="text-center mb-4 mt-4">
+                <div className="text-center mb-4 mt-4">x
                     <IndicadorPag
                         TituloIndc={"Categorias"} />
                 </div>
-                <div className="ml-12 h-60 flex mx-auto gap-5  justify-center">
+                <div className="ml-12 h-60 flex mx-auto gap-5  justify-center flex-row">
+                    {categorias.map(function (categoria){
+                    return(
+                <CirculoCategoria
+                key={categoria.id_categoria}
+                categoria={categoria.nombre}
+                img={categoria.image_cat}
+                />
+                    )})}
+                </div>
+                    
+                {/*<div className="ml-12 h-60 flex mx-auto gap-5  justify-center">
                     <Link to="/CategoriaCelular"><CirculoCategoria imagen={celular} categoria="Celulares" /></Link>
                     <Link to="/CategoriaLaptop"><CirculoCategoria imagen={laptop} categoria="Laptops" /></Link>
                     <Link to="/CategoriaMonitores"><CirculoCategoria imagen={monitor} categoria="Monitores" /></Link>
@@ -39,7 +66,7 @@ function Productos() {
                     <Link to="/CategoriaTablet"><CirculoCategoria imagen={tablet} categoria="Tablets" /></Link>
                     <Link to="/CategoriaAuricular"><CirculoCategoria imagen={auricular} categoria="Auriculares" /></Link>
                     <Link to="/CategoriaSmartwatch"><CirculoCategoria imagen={smartwatch} categoria="Smartwatchs" /></Link>
-                </div>
+    </div>*/}
                 <div className="text-semibold gap-12 mx-auto flex justify-center h-96">
                     <CardProdu imagen={gtneo} producto="Realme GT Neo 3" descripcion="150W Dual SIM 256GB Negro 12GB RAM" precio="4,750.00" />
                     <CardProdu imagen={a23} producto="Samsung A23" descripcion="128GB 4GB RAM Color Azul" precio="4,099.99" />
@@ -54,7 +81,8 @@ function Productos() {
             </div>
             <Footer />
         </main>
-    );
-}
+    )
+ }
+
 
 export default Productos;
