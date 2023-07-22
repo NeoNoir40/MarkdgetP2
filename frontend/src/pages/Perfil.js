@@ -1,16 +1,16 @@
 import React from "react";
-import Encabezado from "./Encabezado";
-import Footer from "./Footer";
+
+
 import profile from "../img/profile.jpg";
-import CardPerfil from "./CardPerfil";
-import BotonGeneral from "./BontonGeneral";
+import CardPerfil from "../components/CardPerfil";
+import BotonGeneral from "../components/BontonGeneral";
 
 
 function Perfil() {
     return (
         <main className="bgmain min-h-screen">
             <div className=" h-24">
-                <Encabezado />
+               
             </div>
             <div className="text-center text-white font-bold h-16 mt-16">
                 <h1 className="text-4xl">Mi Perfil</h1>
@@ -41,7 +41,7 @@ function Perfil() {
                     <BotonGeneral texto="Log Out" />
                 </div>
                 <div>
-                    <Footer />
+                    
                 </div>
             </div>
         </main>

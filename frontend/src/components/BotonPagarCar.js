@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import React from "react";
 import BotonGeneral from "./BontonGeneral";
 function BotonPagarCar({ cantidad, direccion, total }) {
@@ -13,7 +13,7 @@ function BotonPagarCar({ cantidad, direccion, total }) {
             <h5 className="mt-3">Productos {cantidad}</h5>
             <p className="mt-3 text-black">Direccion: <span className="text-[#9B03A8]">{direccion}</span></p>
             <p className="mt-3">Total: {total} mxn</p>
-            <BotonGeneral texto={"Pagar"} link={'/Pasarela_pago'}/>
+            <BotonGeneral texto={"Pagar"} link={'/PasarelaPago'}/>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardProdu from "../components/CardProdu";
 import smart1 from "../img/smart1.avif";
 import smart2 from "../img/smart2.png";
@@ -10,7 +10,7 @@ function CategoriaSmartwatch(){
     return(
         <div>
             <div className="h-24">
-                <Encabezado/>
+                
             </div>
             <div className="text-white text-center text-3xl h-16">
                 <h1>Smartwatch</h1>
@@ -39,7 +39,7 @@ function CategoriaSmartwatch(){
             </div>
             </div>
             <div>
-                <Footer/>
+                
             </div>
         </div>
     )

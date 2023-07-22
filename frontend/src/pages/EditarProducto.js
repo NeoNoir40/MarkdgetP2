@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import BotonGeneral from "../components/BontonGeneral";
 import IndicadorPag from "../components/PagIndicador";
 
@@ -8,7 +8,7 @@ function EditarProducto() {
     return (
 
         <main>
-            <Encabezado />
+           
             <div className="min-h-screen">
 
                 <div>
@@ -41,7 +41,7 @@ function EditarProducto() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            
         </main>
 
     );

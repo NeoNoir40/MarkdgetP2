@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardProdu from "../components/CardProdu";
 import auri1 from "../img/auri1.webp";
 import auri2 from "../img/auri2.webp";
@@ -10,7 +10,7 @@ function CategoriaAuricular() {
     return(
         <div>
             <div className="h-24">
-                <Encabezado/>
+                
             </div>
             <div className="text-white text-center text-3xl h-16">
                 <h1>Auriculares</h1>
@@ -37,7 +37,7 @@ function CategoriaAuricular() {
             <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
             </div>
             <div>
-                <Footer/>
+                
             </div>
         </div>
     )

@@ -30,15 +30,6 @@ const crearCliente = (req, res) => {
 };
 
 
-const obtenerClientes = (req, res) => {
-  db.query('SELECT * FROM clientes', (error, resultados) => {
-    if (error) {
-      res.status(500).json({ error: 'Ocurrió un error al obtener los clientes' });
-    } else {
-      res.json(resultados);
-    }
-  });
-};
 
 const obtenerClientePorId = (req, res) => {
   const id = req.params.id;
@@ -99,9 +90,10 @@ const login = (req, res) => {
       if (contrasenaValida) {
         // La contraseña es válida, se puede permitir el acceso
         // Aquí se puede generar un token de autenticación, establecer una sesión, etc.
-        const token = jwt.sign({ id: cliente.id_cliente }, tokenSecret, { expiresIn: '1h' });
+        const token = jwt.sign({ id: cliente.id_cliente }, tokenSecret, { expiresIn: '1d' });
 
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token);
+
          
         res.json({ mensaje: 'Inicio de sesión exitoso', token: token });
       } else {
@@ -112,14 +104,52 @@ const login = (req, res) => {
 };
 
 
-const logout =(req,res) =>{
-  // Eliminar la cookie que almacena el token
-  res.clearCookie('token');
 
-  // Responder con éxito al cliente
-  res.json({ mensaje: 'Logout exitoso' });
-}
 
+
+const AuthReq = (req, res, next) => {
+  const { token } = req.cookies;
+
+  if (!token) return res.status(401).json({ message: "Sin token, autorizacion denegada" });
+
+  jwt.verify(token, tokenSecret, (err, user) => {
+    if (err) return res.status(403).json({ message: "Token no valido" });
+
+    // El objeto decodificado del token se almacena en la variable 'user'
+    req.user = user
+
+    next();
+  });
+};
+const verifyToken = async (req, res) => {
+  const { token } = req.cookies;
+  if (!token) return res.json({authenticated: false});
+
+  jwt.verify(token, tokenSecret, async (error, user) => {
+    if (error) return res.sendStatus(401);
+
+    const id = user.id
+    console.log("ID del usuario:", id);
+    console.log("token del:", token);
+
+    db.query('SELECT * FROM clientes WHERE id_cliente = ?', [id], async (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
+      } else if (results.length === 0) {
+        res.sendStatus(401);
+      } else {
+        const userFound = results[0];
+
+        return res.json({
+          id: userFound.id_cliente,
+          nombre: userFound.nombre,
+          email: userFound.email,
+          // Otros datos del usuario que se deseen incluir en la respuesta
+        });
+      }
+    });
+  });
+};
 
 const profile = (req, res) => {
   const id = req.user.id;
@@ -148,51 +178,17 @@ const profile = (req, res) => {
 };
 
 
-const AuthReq = (req, res, next) => {
-  const { token } = req.cookies;
 
-  if (!token) return res.status(401).json({ message: "Sin token, autorizacion denegada" });
+const logout =(req,res) =>{
+  // Eliminar la cookie que almacena el token
+  res.clearCookie('token');
 
-  jwt.verify(token, tokenSecret, (err, user) => {
-    if (err) return res.status(403).json({ message: "Token no valido" });
-
-    // El objeto decodificado del token se almacena en la variable 'user'
-    req.user = user
-
-    next();
-  });
-};
-
-const verifyToken = async (req, res) => {
-  const { token } = req.cookies;
-  if (!token) return res.send(false);
-
-  jwt.verify(token, TOKEN_SECRET, async (error, user) => {
-    if (error) return res.sendStatus(401);
-
-    db.query('SELECT * FROM users WHERE id = ?', [user.id], async (error, results) => {
-      if (error) {
-        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
-      } else if (results.length === 0) {
-        res.sendStatus(401);
-      } else {
-        const userFound = results[0];
-
-        return res.json({
-          id: userFound.id,
-          username: userFound.username,
-          email: userFound.email,
-          // Otros datos del usuario que se deseen incluir en la respuesta
-        });
-      }
-    });
-  });
-};
-
+  // Responder con éxito al cliente
+  res.json({ mensaje: 'Logout exitoso' });
+}
 
 module.exports = {
   crearCliente,
-  obtenerClientes,
   obtenerClientePorId,
   actualizarCliente,
   eliminarCliente,

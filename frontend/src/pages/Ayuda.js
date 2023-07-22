@@ -1,12 +1,12 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardAyuda from "../components/CardAyuda";
 
 function Ayuda() {
     return (
         <>
-            <Encabezado />
+            
             <div className=" min-h-screen">
                 <div className=" text-center text-5xl h-20 text-fuchsia-700 gap-14 font-bold mt-10">
                     <h1>Ayuda y Soporte</h1>
@@ -38,7 +38,7 @@ function Ayuda() {
                     icon2={<box-icon name='right-arrow-alt' size="md"></box-icon>}
                 />
             </div>
-            <Footer />
+          
         </>
     );
 }

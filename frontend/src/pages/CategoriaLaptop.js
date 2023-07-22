@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardProdu from "../components/CardProdu";
 import image2x from "../img/image2x.png"
 import lap10 from "../img/lap10.png"
@@ -11,7 +11,7 @@ function CategoriaLaptop(){
     return(
         <div>
             <div className="h-24">
-            <Encabezado/>
+            
             </div>
             <div className="text-center text-white text-3xl h-16">
                 <h1>Laptops</h1>
@@ -39,7 +39,7 @@ function CategoriaLaptop(){
             <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
             </div>
             <div>
-                <Footer/>
+                
             </div>
         </div>
         </div>

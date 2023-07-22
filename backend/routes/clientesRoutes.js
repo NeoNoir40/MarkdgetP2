@@ -11,7 +11,7 @@ router.get('/profile',clientesController.AuthReq,clientesController.profile);
 // Crear un nuevo cliente
 router.post('/',validateSchema(registerSchema), clientesController.crearCliente); 
 // Obtener todos los clientes
-router.get('/',validateSchema(loginSchema),clientesController.AuthReq,clientesController.obtenerClientes); 
+
 // Obtener un cliente por su ID
 router.get('/:id',clientesController.AuthReq, clientesController.obtenerClientePorId); 
 // Actualizar un cliente existente

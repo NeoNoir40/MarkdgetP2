@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import BotonGeneral from "../components/BontonGeneral";
 import IndicadorPag from "../components/PagIndicador";
 
@@ -8,7 +8,7 @@ function EditarUsuario() {
     return (
 
         <main>
-            <Encabezado />
+            
             <div className="min-h-screen">
 
                 <div>
@@ -52,7 +52,7 @@ function EditarUsuario() {
                     </div>
                 </div>
             </div>
-            <Footer />
+           
         </main>
 
     );

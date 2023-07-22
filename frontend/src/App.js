@@ -1,19 +1,19 @@
 
 import './App.css';
-import Contacto from './components/Contacto';
 import Encabezado from './components/Encabezado';
+import Footer from './components/Footer';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import Inicio from './pages/Inicio';
-import Nosotros from './components/Nosotros';
+import Nosotros from './pages/Nosotros';
 import Carrito from './pages/Carrito';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 import RecuperContraseña from './pages/RecuperarContraseña';
-import Perfil from './components/Perfil'
+import Perfil from './pages/Perfil'
 import Productos from './pages/Productos';
 import 'boxicons'
-import Pasarela_pago from './pages/Pasarela_pago';
-import Perfil_vendedor from './pages/Perfil_vendedor';
+import PasarelaPago from './pages/PasarelaPago';
+import PerfilVendedor from './pages/PerfilVendedor';
 import Ayuda from './pages/Ayuda';
 import ConfiCuenta from './pages/Conficuenta';
 import Seguridad from './pages/Seguridad';
@@ -39,22 +39,28 @@ import PierdoTelef from './pages/PierdoTelef';
 import CrearCategoria from './pages/CrearCategoria';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
-
+import InicioAdmin from './pages/IncioAdmin';
+import IncioAdminCard from './components/IncioAdminCard';
+import LoginAdmin from './pages/LoginAdmin';
 function App() {
   return (
 
 
 <AuthProvider>
 <BrowserRouter>
+<Encabezado/>
 <Routes>
   <Route path='/'element={<Inicio/>} ></Route>
+  <Route path='/a'element={<IncioAdminCard/>} ></Route>
 
-  
-  
+  <Route path='/InicioAdmin' element={<InicioAdmin/>}></Route>
+  <Route path='/LoginAdmin' element={<LoginAdmin/>}></Route>
   <Route path='/Login' element={<Login/>}></Route>
   <Route path='/Registro' element={<Registro/>}></Route>
   <Route path='/Nosotros' element={<Nosotros/>}></Route>
-  <Route path='/Contacto' element={<Contacto/>}></Route>
+ 
+  
+ 
   <Route path='/Productos' element={<Productos/>}></Route>
   <Route path='/VistaProducto' element={<VistaProducto/>}></Route>
   <Route path='/CategoriaCelular' element={<CategoriaCelular/>} ></Route>
@@ -69,8 +75,8 @@ function App() {
  <Route path='/Carrito' element={<Carrito/>}></Route>
   <Route path='/RecuperContraseña' element={<RecuperContraseña/>}></Route>
   <Route path='/Perfil' element={<Perfil/>}></Route>
-  <Route path='/Pasarela_Pago' element={<Pasarela_pago/>}></Route>
-  <Route path='/Perfil_vendedor' element={<Perfil_vendedor/>}></Route>
+  <Route path='/PasarelaPago' element={<PasarelaPago/>}></Route>
+  <Route path='/PerfilVendedor' element={<PerfilVendedor/>}></Route>
   <Route path='/Ayuda' element={<Ayuda/>}></Route>
   <Route path='/Config_cuenta' element={<ConfiCuenta/>}></Route>
   <Route path='/Seguridad' element={<Seguridad/>}></Route>
@@ -88,6 +94,7 @@ function App() {
   <Route path='/CrearCategoria' element={<CrearCategoria/>}></Route>
  </Route>
 </Routes>
+<Footer/>
 </BrowserRouter>
 </AuthProvider>
 

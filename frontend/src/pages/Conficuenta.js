@@ -1,13 +1,13 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardAyuda from "../components/CardAyuda";
 import IndicadorPag from "../components/PagIndicador";
 
 function ConfiCuenta(){
     return(
         <>
-        <Encabezado/>
+        
         <div className=" min-h-screen">
 
         <div className="text-center mt-5 mb-7">
@@ -35,7 +35,7 @@ function ConfiCuenta(){
         />
         </div>
         </div>
-        <Footer/>
+        
         </>
     );
 }

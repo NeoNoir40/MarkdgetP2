@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "./Encabezado";
-import Footer from "./Footer";
+
+
 import { Link } from "react-router-dom";
 import wilberth from '../img/wilberth.jpg';
 import coronado from "../img/coronado.jpg";
@@ -10,7 +10,7 @@ function Nosotros() {
     return (
         <div className=" min-h-screen">
             <div className=" h-24 ">
-                <Encabezado />
+               
             </div>
             <div className=" text-center justify-center items-center text-5xl h-20 text-fuchsia-700 gap-14 font-bold mt-16">
                 <h1>Acerca de nosotros</h1>
@@ -48,7 +48,7 @@ function Nosotros() {
                 </ul>
             </div>
             <div>
-                <Footer />
+                
             </div>
         </div>
     )

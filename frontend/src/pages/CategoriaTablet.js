@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardProdu from "../components/CardProdu";
 import tab1 from "../img/tab1.webp";
 import tab2 from "../img/tab2.avif";
@@ -10,7 +10,7 @@ function CategoriaTablet(){
     return(
         <div>
         <div className="h-24">
-            <Encabezado/>
+            
         </div>
         <div className="text-white text-center h-16 text-3xl">
             <h1>Tablets</h1>
@@ -38,7 +38,7 @@ function CategoriaTablet(){
             <CardProdu producto="TLC Tablet" descripcion="Tablet de TLC 8plg 32GB+4GB RAM " imagen={tab3} precio="5,240.00" />
             </div>
         <div>
-            <Footer/>
+            
         </div>
         </div>
         </div>

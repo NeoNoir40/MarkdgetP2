@@ -1,13 +1,13 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import BotonSec from "../components/BotonSecun";
 
 
 function RoboCuenta() {
     return (
         <>
-            <Encabezado />
+           
             <div className=" min-h-screen">
                 <p className=" text-2xl text-fuchsia-700 font-bold m-5 mt-10 ml-80">Me robaron la cuenta</p>
                 <div className=" ml-80">
@@ -31,7 +31,7 @@ function RoboCuenta() {
                     </div>
                 </div>
             </div>
-            <Footer />
+           
         </>
     );
 }

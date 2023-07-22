@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CirculoCategoria from "../components/CirculoCategoria";
 import celular from '../img/celular.png';
 import laptop from '../img/laptop.png';
@@ -25,7 +25,7 @@ function Productos() {
     return (
 
         <main className="bgmain min-h-screen">
-            <Encabezado />
+            
             <div className="min-h-screen">
                 <div className="text-center mb-4 mt-4">
                     <IndicadorPag
@@ -52,7 +52,7 @@ function Productos() {
                     <CardOfert text="¡10% DE DESCUENTO EN ARTÍCULOS GAMING" imagen={gaming} />
                 </div>
             </div>
-            <Footer />
+            
         </main>
     );
 }
