@@ -5,7 +5,9 @@ function InicioAdmin (){
     return(
         <main className="min-h-screen">
         <div>
+            <div className="m-1">
             <IncioAdminCard/>
+            </div>
         </div>
         </main>
     );

@@ -22,34 +22,34 @@ function IncioAdminCard() {
         return (
             <div>
                 <div className="text-center flex justify-center mt-10">
-                    <table className="bg-white ">
+                    <table className="table table-striped text-bold ">
                         <thead>
                             <tr>
-                                <th className="dos ">#</th>
-                                <th className="uno">Nombre</th>
-                                <th className="dos">Email</th>
-                                <th className="uno">Contraseña</th>
-                                <th className="dos">Direccion</th>
-                                <th className="uno">Ciudad</th>
-                                <th className="dos">Estado</th>
-                                <th className="uno">Pais</th>
-                                <th className="dos">eliminar</th>
-                                <th className="uno">upgrade</th>
+                                <th className=" ">#</th>
+                                <th className="">Nombre</th>
+                                <th className="">Email</th>
+                                <th className="">Contraseña</th>
+                                <th className="">Direccion</th>
+                                <th className="">Ciudad</th>
+                                <th className="">Estado</th>
+                                <th className="">Pais</th>
+                                <th className="">eliminar</th>
+                                <th className="">upgrade</th>
                             </tr>
                         </thead>
-                        <tbody className="bordetabla">
+                        <tbody className="">
                             {clientes.map((cliente) => (
                                 <tr key={cliente.id }>
-                                    <td className="bordetabla">{cliente.id}</td>
-                                    <td className="bordetabla">{cliente.nombre}</td>
-                                    <td  className="bordetabla">{cliente.email}</td>
-                                    <td  className="bordetabla">{cliente.contrasena}</td>
-                                    <td  className="bordetabla">{cliente.direccion}</td>
-                                    <td  className="bordetabla">{cliente.ciudad}</td>
-                                    <td  className="bordetabla">{cliente.estado}</td>
-                                    <td className="bordetabla">{cliente.pais}</td>
-                                    <td className="bordetabla">delete</td>
-                                    <td  className="bordetabla">upgrade</td>
+                                    <td className="">{cliente.id}</td>
+                                    <td className="">{cliente.nombre}</td>
+                                    <td  className="">{cliente.email}</td>
+                                    <td  className="">{cliente.contrasena}</td>
+                                    <td  className="">{cliente.direccion}</td>
+                                    <td  className="">{cliente.ciudad}</td>
+                                    <td  className="">{cliente.estado}</td>
+                                    <td className="">{cliente.pais}</td>
+                                    <td className="">delete</td>
+                                    <td  className="">upgrade</td>
                                 </tr>
                             ))}
                         </tbody>
