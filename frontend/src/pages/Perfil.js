@@ -16,7 +16,7 @@ function Perfil() {
                 <h1 className="text-4xl">Mi Perfil</h1>
             </div>
             <div className="flex items-center h-40">
-                <img src={profile} className=" rounded-3xl w-28 mx-auto block" />
+                <img src={profile}  alt=""className=" rounded-3xl w-28 mx-auto block" />
             </div>
             <div className="text-center h-10 text-white font-semibold">
                 <p className="text-1xl">Datos Personales</p>

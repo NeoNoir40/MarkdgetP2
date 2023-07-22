@@ -22,7 +22,7 @@ function IncioAdminCard() {
         return (
             <div>
                 <div className="text-center flex justify-center mt-10">
-                    <table className="table table-striped text-bold ">
+                    <table className="table table-striped text-bold  w-[250px] ">
                         <thead>
                             <tr>
                                 <th className=" ">#</th>

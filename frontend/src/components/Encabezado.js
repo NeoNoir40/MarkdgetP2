@@ -22,7 +22,7 @@ function Encabezado() {
                         <>
                             {/* Enlaces para usuarios administradores */}
                             <Link className="ml-4 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" to="/PerfilVendedor">Admin</Link>
-                            <Link className="ml-4 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" to="/AdminDashboard">Dashboard de Admin</Link>
+                            <Link className="ml-4 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" to="/a">Dashboard de Admin</Link>
                             <Link className="ml-4 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" to="/" onClick={logout}>Logout</Link>
                         </>
                     ) : (
