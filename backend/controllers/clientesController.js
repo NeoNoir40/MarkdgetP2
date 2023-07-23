@@ -95,7 +95,7 @@ const login = (req, res) => {
         res.cookie('token', token);
 
          
-        res.json({ mensaje: 'Inicio de sesión exitoso', token: token });
+        res.json({ mensaje: 'Inicio de sesión exitoso de cliente', token: token });
       } else {
         res.status(401).json({ error: 'Contraseña incorrecta' });
       }
