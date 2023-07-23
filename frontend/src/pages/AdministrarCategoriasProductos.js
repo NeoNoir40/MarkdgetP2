@@ -2,7 +2,6 @@ import React from "react";
 
 import IndicadorPag from "../components/PagIndicador";
 import CategoriasProductosTable from "../components/CategoriasProductos";
-import BotonGeneral from "../components/BontonGeneral";
 
 function AdministrarCategoriasProductosAdmin (){
     return(

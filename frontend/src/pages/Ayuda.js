@@ -1,5 +1,6 @@
 import React from "react";
-
+import { BiSolidLockAlt } from "react-icons/bi";
+import { BiMoney } from "react-icons/bi";
 
 import CardAyuda from "../components/CardAyuda";
 
@@ -13,14 +14,14 @@ function Ayuda() {
                 </div>
                 <p className=" text-2xl text-fuchsia-700 font-bold  ml-72">Tus compras</p>
                 <CardAyuda
-                    icon1={<box-icon name='lock-alt' size="lg"></box-icon>}
+                    icon1={<BiSolidLockAlt />}
                     titulo={"Control y Cancelaciones de tus compras"}
                     descripcion={"Pagos, reclamar, modificar o cancelar"}
                     enviar={'/VistaCanceRemb'}
                     icon2={<box-icon name='right-arrow-alt' size="md"></box-icon>}
                 />
                 <CardAyuda
-                    icon1={<box-icon name='dollar' size="lg"></box-icon>}
+                    icon1={<BiMoney/>}
                     titulo={"Devolución y reembolso"}
                     descripcion={"Devolución de un producto o consulta para reembolso"}
                     enviar={'/VistaCanceRemb'}

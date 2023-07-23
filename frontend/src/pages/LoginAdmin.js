@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { useAuth } from "../context/AuthContext";
 import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion";
+import { BiSolidUser } from "react-icons/bi";
 
 function LoginAdmin() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -32,7 +33,7 @@ function LoginAdmin() {
         <main>
             <div className="min-h-screen flex justify-center items-center text-center">
                 <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg">
-                    <h1 className="font-bold text-white "><box-icon name='user' color='#ffffff' ></box-icon>Iniciar Sesión como Administrador</h1>
+                    <h1 className="font-bold text-white "><BiSolidUser/>Iniciar Sesión como Administrador</h1>
                     {signinAdminErrors.map((error, i) => (
                         <div className="bg-red-500 p-2 text-white" key={i}>
                             {error}

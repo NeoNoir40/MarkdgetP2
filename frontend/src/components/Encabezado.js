@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { BiHomeHeart} from "react-icons/bi";
 
 function Encabezado() {
     const { isAuthenticated, logout, admin } = useAuth();
@@ -14,11 +15,12 @@ function Encabezado() {
                         <div className="flex flex-row "></div>
 
                         <div className="text-white bghead flex text-center flex-row items-center justify-center mt-2 ">
-                            <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">
-                                <Link to="/">
-                                    <box-icon name='home' type='solid' color='#ffffff'></box-icon>Markdget
-                                </Link>
-                            </h1>
+                            
+                            <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link to="/">
+                                    <BiHomeHeart/>  
+                                </Link>Markdget
+                              
+                            </h1> 
 
                             {isAuthenticated ? (
                                 <>

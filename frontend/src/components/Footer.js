@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { BiLogoFacebookSquare } from "react-icons/bi";
+import { BiLogoInstagram } from "react-icons/bi";
+import { BiLogoTwitter } from "react-icons/bi";
 function Footer() {
     return (
             <footer className="bgfoot bottom-0  w-full mt-10">'
@@ -14,9 +16,9 @@ function Footer() {
                             <Link className="ml-16" to="/Ayuda">Soporte</Link>
                         </div>
                         <div className=" flex flex-row-reverse ">
-                            <box-icon name='twitter' type='logo' color='#ffffff' ></box-icon>
-                            <box-icon name='facebook-square' type='logo' color='#ffffff' ></box-icon>
-                            <box-icon name='instagram' type='logo' color='#ffffff' ></box-icon>
+                           <BiLogoTwitter/>
+                           <BiLogoFacebookSquare/>
+                            <BiLogoInstagram/>
                         </div>
                     </div>
                 </div>

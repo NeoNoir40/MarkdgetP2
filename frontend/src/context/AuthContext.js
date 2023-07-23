@@ -1,7 +1,7 @@
 // AuthContext.js
 
 import { createContext, useState, useContext, useEffect } from 'react';
-import { registerRequest, loginRequest, verifyTokenRequest, loginAdmin, verifyTokenRequestAdmin , CrearProducto , ActualizarProducto, obtenerProductoPorId} from '../api/auth';
+import { registerRequest, loginRequest, verifyTokenRequest, loginAdmin, verifyTokenRequestAdmin , CrearProducto , ActualizarProducto, } from '../api/auth';
 import Cookies from 'js-cookie';
 
 

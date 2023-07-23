@@ -65,15 +65,6 @@ function ProductosAdmin() {
     }
 };
 
-// ...
-
-{Productos.map((producto , i) => (
-    <tr key={producto.id}>
-        <td>
-            <button onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
-        </td>
-    </tr>
-))}
 
 
   return (

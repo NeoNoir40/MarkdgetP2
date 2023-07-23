@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion";
 import IndicadorPag from "../components/PagIndicador";
-import { useAuth , updateProducto} from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 
 function CrearProducto() {

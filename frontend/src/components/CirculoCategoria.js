@@ -6,7 +6,7 @@ function CirculoCategoria({imagen,categoria}){
             <div className="hover:scale-105 inline-block transition-all hover:contrast-125 hover:shadow-2xl">      
             <div className="mx-auto h-44">
             <div className="w-40 h-40 rounded-full bg-transparent border mx-auto">
-                <img src={imagen} className="h-40 w-40 rounded-full"/>
+                <img src={imagen} alt="" className="h-40 w-40 rounded-full"/>
             </div>
             </div>
             <div>
