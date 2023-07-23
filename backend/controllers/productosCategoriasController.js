@@ -2,7 +2,7 @@ const db = require('../db');
 
 // Obtener todas las relaciones productos-categorias
 const obtenerProductosCategorias = (req, res) => {
-  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria', (error, resultados) => {
+  db.query('Call markdget.p_PrinProd()', (error, resultados) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al obtener las relaciones productos-categorias' });
     } else {
