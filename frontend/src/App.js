@@ -19,7 +19,7 @@ import ConfiCuenta from './pages/Conficuenta';
 import Seguridad from './pages/Seguridad';
 import VistaProducto from './pages/VistaProducto';
 import AdministrarProductos from './pages/AdministrarProductos';
-import EditarProducto from './pages/EditarProducto';
+import EditarProductos from './pages/EditarProductos';
 import CrearProducto from './pages/CrearProducto';
 import EditarUsuario from './pages/EditarUsuario';
 import EditarAdministrador from './pages/EditarAdmnistrador';
@@ -40,8 +40,12 @@ import CrearCategoria from './pages/CrearCategoria';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import InicioAdmin from './pages/IncioAdmin';
-import IncioAdminCard from './components/IncioAdminCard';
 import LoginAdmin from './pages/LoginAdmin';
+import PerfilAdmin from './pages/PerfilAdmin';
+import AdministrarProductosAdmin from './pages/AdministrarProdcutosAdmin';
+import AdministrarCategoriasAdmin from './pages/AdministrarCategoriasAdmin';
+import AdministrarCategoriasProductosAdmin from './pages/AdministrarCategoriasProductos';
+
 function App() {
   return (
 
@@ -51,15 +55,12 @@ function App() {
 <Encabezado/>
 <Routes>
   <Route path='/'element={<Inicio/>} ></Route>
-  <Route path='/a'element={<IncioAdminCard/>} ></Route>
-
-  <Route path='/InicioAdmin' element={<InicioAdmin/>}></Route>
+  <Route path='/AdminProd'element={<AdministrarProductosAdmin/>} ></Route>
+  <Route path='/Usuarios' element={<InicioAdmin/>}></Route>
   <Route path='/LoginAdmin' element={<LoginAdmin/>}></Route>
   <Route path='/Login' element={<Login/>}></Route>
   <Route path='/Registro' element={<Registro/>}></Route>
   <Route path='/Nosotros' element={<Nosotros/>}></Route>
- 
-  
  
   <Route path='/Productos' element={<Productos/>}></Route>
   <Route path='/VistaProducto' element={<VistaProducto/>}></Route>
@@ -72,6 +73,10 @@ function App() {
   <Route path='/CategoriaSmartwatch' element={<CategoriaSmartwatch/>}></Route>
 
  <Route element={<ProtectedRoute/>}>
+
+ <Route path='/CategoriaProd' element={<AdministrarCategoriasProductosAdmin/>}></Route>
+ <Route path='/CategoriasAdmin' element={<AdministrarCategoriasAdmin/>}></Route>
+ <Route path='/PerfilAdmin' element={<PerfilAdmin/>}></Route>
  <Route path='/Carrito' element={<Carrito/>}></Route>
   <Route path='/RecuperContraseña' element={<RecuperContraseña/>}></Route>
   <Route path='/Perfil' element={<Perfil/>}></Route>
@@ -81,7 +86,7 @@ function App() {
   <Route path='/Config_cuenta' element={<ConfiCuenta/>}></Route>
   <Route path='/Seguridad' element={<Seguridad/>}></Route>
   <Route path='/AdministrarProductos' element={<AdministrarProductos/>}></Route>
-  <Route path='/EditarProducto' element={<EditarProducto/>}></Route>
+  <Route path='/EditarProductos' element={<EditarProductos/>}></Route>
   <Route path='/CrearProducto' element={<CrearProducto/>}></Route>
   <Route path='/EditarUsuario' element={<EditarUsuario/>}></Route>
   <Route path='/EditarAdministrador' element={<EditarAdministrador/>}></Route>

@@ -24,7 +24,7 @@ function LoginAdmin() {
     useEffect(() => {
         if (isAuthenticated) {
             // Si el usuario es un administrador, redirigir a la ruta para administradores
-            navigate("/PerfilVendedor");
+            navigate("/PerfilAdmin");
         }
     }, [isAuthenticated, navigate]);
 
