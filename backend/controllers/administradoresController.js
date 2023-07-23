@@ -126,13 +126,13 @@ const login = (req, res) => {
 
         if (contrasenaValida) {
           // La contraseña es válida, se puede permitir el acceso
-          // Aquí se puede generar un token de autenticación, establecer una sesión, etc.
-          const token = jwt.sign({ id: administrador.id_administrador  }, tokenSecret, { expiresIn: '1d' });
+          // Aquí se puede generar un tokena de autenticación, establecer una sesión, etc.
+          const tokena = jwt.sign({ id: administrador.id_administrador  }, tokenSecret, { expiresIn: '1d' });
   
-          res.cookie('token', token);
+          res.cookie('tokena', tokena);
   
            
-          res.json({ mensaje: 'Inicio de sesión exitoso del admin', token: token });
+          res.json({ mensaje: 'Inicio de sesión exitoso del admin', tokena: tokena });
         } else {
           res.status(401).json({ error: 'Contraseña incorrecta' });
         }
@@ -141,14 +141,14 @@ const login = (req, res) => {
   };
 
 const AuthReq = (req, res, next) => {
-  const { token } = req.cookies;
+  const { tokena } = req.cookies;
 
-  if (!token) return res.status(401).json({ message: "Sin token, autorizacion denegada" });
+  if (!tokena) return res.status(401).json({ message: "Sin tokena, autorizacion denegada" });
 
-  jwt.verify(token, tokenSecret, (err, admin) => {
+  jwt.verify(tokena, tokenSecret, (err, admin) => {
     if (err) return res.status(403).json({ message: "Token no valido" });
 
-    // El objeto decodificado del token se almacena en la variable 'admin'
+    // El objeto decodificado del tokena se almacena en la variable 'admin'
     req.admin = admin
 
     next();
@@ -157,19 +157,19 @@ const AuthReq = (req, res, next) => {
 
 
 const verifyToken = async (req, res) => {
-  const { token } = req.cookies;
-  if (!token) return res.json({authenticated: false});
+  const { tokena } = req.cookies;
+  if (!tokena) return res.json({authenticated: false});
 
-  jwt.verify(token, tokenSecret, async (error, admin) => {
+  jwt.verify(tokena, tokenSecret, async (error, admin) => {
     if (error) return res.sendStatus(401);
 
     const id = admin.id
     console.log("ID del usuario:", id);
-    console.log("token del:", token);
+    console.log("tokena del:", tokena);
 
     db.query('SELECT * FROM administradores WHERE id_administrador = ?', [id], async (error, results) => {
       if (error) {
-        res.status(500).json({ error: 'Ocurrió un error al verificar el token' });
+        res.status(500).json({ error: 'Ocurrió un error al verificar el tokena' });
       } else if (results.length === 0) {
         res.sendStatus(401);
       } else {
@@ -189,8 +189,8 @@ const verifyToken = async (req, res) => {
 
 
 const logout =(req,res) =>{
-  // Eliminar la cookie que almacena el token
-  res.clearCookie('token');
+  // Eliminar la cookie que almacena el tokena
+  res.clearCookie('tokena');
 
   // Responder con éxito al cliente
   res.json({ mensaje: 'Logout exitoso' });

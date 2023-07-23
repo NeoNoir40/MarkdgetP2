@@ -12,7 +12,7 @@ router.get('/:id', categoriasController.obtenerCategoriaPorId);
 router.post('/', categoriasController.crearCategoria);
 
 // Actualizar una categoría existente
-router.put('/:id', categoriasController.actualizarCategoria);
+router.patch('/:id', categoriasController.actualizarCategoria);
 
 // Eliminar una categoría
 router.delete('/:id', categoriasController.eliminarCategoria);
