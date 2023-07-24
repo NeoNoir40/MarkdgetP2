@@ -11,7 +11,6 @@ import Registro from './pages/Registro';
 import RecuperContraseña from './pages/RecuperarContraseña';
 import Perfil from './pages/Perfil'
 import Productos from './pages/Productos';
-import 'boxicons'
 import PasarelaPago from './pages/PasarelaPago';
 import Ayuda from './pages/Ayuda';
 import ConfiCuenta from './pages/Conficuenta';
