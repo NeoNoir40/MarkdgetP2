@@ -2,7 +2,7 @@ const db = require('../db');
 
 // Obtener todas las relaciones productos-categorias
 const obtenerProductosCategorias = (req, res) => {
-  db.query('Call markdget.p_PrinProd()', (error, resultados) => {
+  db.query('SELECT UPPER(SUBSTRING(nombre, 1,30)) AS nombre, descripcion, precio, imagen, stock FROM productos_vista', (error, resultados) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al obtener las relaciones productos-categorias' });
     } else {

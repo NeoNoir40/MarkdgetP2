@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import CardProdu from "../components/CardProdu";
-import auri1 from "../img/auri1.webp";
-import auri2 from "../img/auri2.webp";
-import auri3 from "../img/auri3.png";
+import axios from "axios";
 
 function CategoriaAuricular() {
+
+    const [prodAuricular, setprodAuricular] = useState([])
+
+    useEffect( function() {
+        axios
+        .get("http://localhost:3001/api/productosQuery/seis")
+        .then(function (datos) {
+            setprodAuricular(datos.data)
+        })
+        .catch(() => {
+            console.error("Hay un error")
+        });
+    },[]);
+
     return(
         <div>
             <div className="h-24">
@@ -15,26 +27,18 @@ function CategoriaAuricular() {
             <div className="text-white text-center text-3xl h-16">
                 <h1>Auriculares</h1>
             </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Auricular Redragon" descripcion="Auriculares Pandorra 2 3.5mm RGB" imagen={auri1} precio="809.99" />
-            <CardProdu producto="Auricular Redragon" descripcion="Auriculares Pandorra 2 3.5mm RGB" imagen={auri1} precio="809.99" />
-            <CardProdu producto="Auricular Redragon" descripcion="Auriculares Pandorra 2 3.5mm RGB" imagen={auri1} precio="809.99" />
-            <CardProdu producto="Auricular Redragon" descripcion="Auriculares Pandorra 2 3.5mm RGB" imagen={auri1} precio="809.99" />
-            <CardProdu producto="Auricular Redragon" descripcion="Auriculares Pandorra 2 3.5mm RGB" imagen={auri1} precio="809.99" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Auriculares Sony" descripcion="Auriculares Inalámbricos WF-1000XM4" imagen={auri2} precio="2,280.00" />
-            <CardProdu producto="Auriculares Sony" descripcion="Auriculares Inalámbricos WF-1000XM4" imagen={auri2} precio="2,280.00" />
-            <CardProdu producto="Auriculares Sony" descripcion="Auriculares Inalámbricos WF-1000XM4" imagen={auri2} precio="2,280.00" />
-            <CardProdu producto="Auriculares Sony" descripcion="Auriculares Inalámbricos WF-1000XM4" imagen={auri2} precio="2,280.00" />
-            <CardProdu producto="Auriculares Sony" descripcion="Auriculares Inalámbricos WF-1000XM4" imagen={auri2} precio="2,280.00" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row">
-            <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
-            <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
-            <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
-            <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
-            <CardProdu producto="Auricular Samsung" descripcion="Auriculares inalámbricas ITFIT con diseo lo seguí por ti" imagen={auri3} precio="370.00" />
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
+            {prodAuricular.map(function(auricular){
+                    return(
+                        <CardProdu
+                        key={auricular.id_producto_categoria}
+                        producto={auricular.producto}
+                        imagen={auricular.imagen}
+                        precio={auricular.precio}
+                        stock={auricular.stock}
+                        />
+                    )
+                })}
             </div>
             <div>
                 <Footer/>

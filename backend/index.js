@@ -19,12 +19,14 @@ const productosRoutes = require('./routes/productosRoutes');
 const productosCategoriasRoutes = require('./routes/productosCategoriasRoutes');
 const administradoresRoutes = require('./routes/administradoresRoutes');
 const clientesRoutes = require('./routes/clientesRoutes');
+const productosQueryRoute = require('./routes/productosQueryRoute');
 
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/productosCategoriasRoutes', productosCategoriasRoutes);
 app.use('/api/administradores', administradoresRoutes);
 app.use('/api/clientes', clientesRoutes);
+app.use('/api/productosQuery', productosQueryRoute);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hola mundo</h1>");

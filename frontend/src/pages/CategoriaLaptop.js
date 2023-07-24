@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import CardProdu from "../components/CardProdu";
-import image2x from "../img/image2x.png"
-import lap10 from "../img/lap10.png"
-import laaap from "../img/laaap.png"
+import axios from "axios";
 
 
 function CategoriaLaptop(){
+
+    const [prodLaptops, setprodLaptos] = useState([])
+
+    useEffect(function() {
+        axios
+        .get("http://localhost:3001/api/productosQuery/dos")
+        .then(function(datos){
+            setprodLaptos(datos.data)
+        })
+        .catch(() => {
+            console.error("Hay un error")
+        });
+    },[]);
+
     return(
         <div>
             <div className="h-24">
@@ -17,26 +29,18 @@ function CategoriaLaptop(){
                 <h1>Laptops</h1>
             </div>
             <div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Laptop OMEN" descripcion="Laptop para juegos marca OMEN" imagen={image2x} precio="18,200.00" />
-            <CardProdu producto="Laptop OMEN" descripcion="Laptop para juegos marca OMEN" imagen={image2x} precio="18,200.00" />
-            <CardProdu producto="Laptop OMEN" descripcion="Laptop para juegos marca OMEN" imagen={image2x} precio="18,200.00" />
-            <CardProdu producto="Laptop OMEN" descripcion="Laptop para juegos marca OMEN" imagen={image2x} precio="18,200.00" />
-            <CardProdu producto="Laptop OMEN" descripcion="Laptop para juegos marca OMEN" imagen={image2x} precio="18,200.00" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Laptop Honor" descripcion="Laptop con Core i5, 256GB 8GB RAM" imagen={laaap} precio="13,050.00" />
-            <CardProdu producto="Laptop Honor" descripcion="Laptop con Core i5, 256GB 8GB RAM" imagen={laaap} precio="13,050.00" />
-            <CardProdu producto="Laptop Honor" descripcion="Laptop con Core i5, 256GB 8GB RAM" imagen={laaap} precio="13,050.00" />
-            <CardProdu producto="Laptop Honor" descripcion="Laptop con Core i5, 256GB 8GB RAM" imagen={laaap} precio="13,050.00" />
-            <CardProdu producto="Laptop Honor" descripcion="Laptop con Core i5, 256GB 8GB RAM" imagen={laaap} precio="13,050.00" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row">
-            <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
-            <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
-            <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
-            <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
-            <CardProdu producto="Laptop ASUS" descripcion="Laptop para hogar ProArtStudiobook" imagen={lap10} precio="11,100.00" />
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
+            {prodLaptops.map(function(laptops){
+                return(
+                    <CardProdu
+                    key={laptops.id_producto_categoria}
+                    producto={laptops.producto}
+                    imagen={laptops.imagen}
+                    precio={laptops.precio}
+                    stock={laptops.stock}
+                    />
+                )
+            })}
             </div>
             <div>
                 <Footer/>

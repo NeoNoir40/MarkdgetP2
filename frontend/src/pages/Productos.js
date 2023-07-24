@@ -18,7 +18,7 @@ import axios from "axios";
 import Carousel from "../components/Carousel";
 
 function Productos() {
-
+    
     const [categorias, setCategorias] = useState([])
     
     useEffect(function (){
@@ -36,7 +36,7 @@ function Productos() {
 
 useEffect(function() {
     axios
-    .get("http://localhost:3001/api/productos")
+    .get("http://localhost:3001/api/productosCategoriasRoutes")
     .then(function (datos) {
         setproductosCategorias(datos.data);
     })
@@ -57,11 +57,11 @@ useEffect(function() {
                 <div className="ml-12 h-60 flex mx-auto gap-5  justify-center flex-row">
                     {categorias.map(function (categoria){
                     return(
-                <CirculoCategoria
+                <Link to={categoria.enlace}><CirculoCategoria
                 key={categoria.id_categoria}
                 categoria={categoria.nombre}
                 img={categoria.image_cat}
-                />
+                /></Link>
                     )})}
                     </div>
 
@@ -77,7 +77,7 @@ useEffect(function() {
                 return(
                     <CardProdu
                     key={producto_categoria.id_producto_categoria}
-                    imagen={gaming}
+                    imagen={producto_categoria.imagen}
                     categoria={producto_categoria.categoria}
                     producto={producto_categoria.nombre}
                     precio={producto_categoria.precio}
@@ -85,7 +85,6 @@ useEffect(function() {
                     />
                 )
             })}
-                   
                 
         </div>
         
