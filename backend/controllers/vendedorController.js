@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const tokenSecret = 'SECRET';
 
 
+
+
+
 const obtenerTodosLosVendedores = (req, res) => {
     db.query('SELECT * FROM vendedor', (error, resultados) => {
         if (error) {
@@ -205,7 +208,17 @@ const contarProductos = (req, res) => {
 };
 
 
+const obtenerProductosVendedores = (req,res) => {
+    const id =  req.params.id;
 
+    db.query('SELECT vendedor.nombre ,productos.nombre,  precio, imagen, stock FROM productos  INNER JOIN vendedor ON productos.id_vendedor = vendedor.id_vendedor WHERE vendedor.id_vendedor = ?',[id],(error, resultados) =>{
+      if(error){
+        res.status(501),json({error : 'Ocurrio un error al obtener las relacion vendedor-producto'});
+      }else{
+        res.json(resultados)
+      }
+    });
+  };
 
 
 const logout = (req, res) => {
@@ -217,6 +230,7 @@ const logout = (req, res) => {
 }
 
 module.exports = {
+    obtenerProductosVendedores,
     crearVendedor,
     obtenerVendedorPorId,
     actualizarVendedor,

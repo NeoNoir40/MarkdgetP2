@@ -10,6 +10,8 @@ router.get('/profile', vendedoresController.AuthReq, vendedoresController.profil
 
 router.get('/contar/:id', vendedoresController.contarProductos);
 
+router.get('/ProductosVendedores/:id', vendedoresController.obtenerProductosVendedores);
+
 
 router.get('/', vendedoresController.obtenerTodosLosVendedores);
 // Crear un nuevo vendedor

@@ -1,3 +1,4 @@
+const { json } = require('express');
 const db = require('../db');
 
 // Obtener todas las relaciones productos-categorias
@@ -10,6 +11,7 @@ const obtenerProductosCategorias = (req, res) => {
     }
   });
 };
+
 
 // Obtener la relación producto-categoria por su ID
 const obtenerProductoCategoriaPorId = (req, res) => {
