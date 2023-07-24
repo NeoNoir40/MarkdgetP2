@@ -20,6 +20,7 @@ import AdministrarProductos from './pages/AdministrarProductos';
 import EditarProductos from './pages/EditarProductos';
 import CrearProducto from './pages/CrearProducto';
 import EditarUsuario from './pages/EditarUsuario';
+import EditarUsuarioCliente from './pages/EditarUsuarioCliente';
 import EditarAdministrador from './pages/EditarAdmnistrador';
 import CategoriaCelular from './pages/CategoriaCelular';
 import CategoriaLaptop from './pages/CategoriaLaptop';
@@ -52,6 +53,8 @@ import CreacionVendedor from './pages/RegistroVendedor';
 import EditRegistroVendedor from './pages/EditarVendedor';
 import LoginVendedor from './pages/LoginVendedor';
 import ProtectedRouteVendedor from './ProtectedRouteVendedor';
+import PerfilVendedor from './pages/PerfilVendedor';
+import EditarVendedorDefault from './pages/EditarVendedorDefault';
 function App() {
   return (
 
@@ -78,6 +81,8 @@ function App() {
 
           {/*Paginas protegiadas para el vendedor*/}
           <Route element={<ProtectedRouteVendedor />}>
+          <Route path='/PerfilVendedor' element={<PerfilVendedor/>}></Route>
+          <Route path='/EditVendedors' element={<EditarVendedorDefault/>}></Route>
 
           </Route>
 
@@ -104,6 +109,7 @@ function App() {
 
           {/*Paginas Protegidas para el cliente*/}
           <Route element={<ProtectedRoute />}>
+            <Route path='/EditarUsuarioCliente' element={<EditarUsuarioCliente />}></Route>
             <Route path='/Carrito' element={<Carrito />}></Route>
             <Route path='/RecuperContraseña' element={<RecuperContraseña />}></Route>
             <Route path='/Perfil' element={<Perfil />}></Route>

@@ -8,6 +8,9 @@ router.get('/verify', vendedoresController.verifyToken);
 
 router.get('/profile', vendedoresController.AuthReq, vendedoresController.profile);
 
+router.get('/contar', vendedoresController.contarProductos);
+
+
 router.get('/', vendedoresController.obtenerTodosLosVendedores);
 // Crear un nuevo vendedor
 router.post('/', vendedoresController.crearVendedor);

@@ -156,7 +156,7 @@ const profile = (req, res) => {
   const id = req.user.id;
 
   db.query(
-    'SELECT  nombre, email, direccion, ciudad, estado, pais FROM clientes WHERE id_cliente = ?',
+    'SELECT id_cliente , nombre, email, direccion, ciudad, estado, pais FROM clientes WHERE id_cliente = ?',
     [id],
     (error, resultados) => {
       if (error) {
@@ -166,6 +166,7 @@ const profile = (req, res) => {
       } else {
         const cliente = resultados[0];
         res.json({
+          id_cliente: cliente.id_cliente,
           nombre: cliente.nombre,
           email: cliente.email,
           direccion: cliente.direccion,

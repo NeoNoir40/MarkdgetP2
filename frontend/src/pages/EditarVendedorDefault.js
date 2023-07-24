@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { viewVendedorPorId } from "../api/auth";
 import axios from "axios";
 
-function EditarVendedor() {
+function EditarVendedorDefault() {
     const navigate = useNavigate();
     const location = useLocation();
     const IdVendedor = new URLSearchParams(location.search).get("id");
@@ -45,7 +45,7 @@ function EditarVendedor() {
                 vendedorDatos
             );
             alert("Vendedor actualizado correctamente");
-            navigate("/AdministrarVendedores");
+            navigate("/PerfilVendedor");
         } catch (error) {
             console.error("Error updating vendedor info", error);
         }
@@ -106,4 +106,4 @@ function EditarVendedor() {
     );
 }
 
-export default EditarVendedor;
+export default EditarVendedorDefault;

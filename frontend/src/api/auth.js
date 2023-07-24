@@ -152,6 +152,16 @@ export const obtenerCategoriaPorId = async (id) => {
     }
 };
 
+export const ContarProductosVendedor = async (id) => {
+    try {
+        const response = await axios.get(`/productos/cantidad/${id}`);
+        return response.data;
+    }catch (error) {
+        throw error;
+    }
+}
+
+
 export const getVendedorPorId = async (id) => {
     try {
         const response = await axios.get(`/vendedor/${id}`);
@@ -213,3 +223,11 @@ export const EliminarCategoria = async (id) => {
 
 
 //Administradores CRUD DE TODO EL SISTEMA
+
+
+export const viewProfile = async () => axios.get(`/clientes/profile`);
+
+export const viewProfileAdmin = async () => axios.get(`/administradores/profile`);
+
+export const viewProfileVendedor = async () => axios.get(`/vendedor/profile`);
+

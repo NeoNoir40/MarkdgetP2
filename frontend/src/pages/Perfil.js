@@ -1,47 +1,59 @@
-import React from "react";
-
-
+import React, { useState, useEffect } from "react";
 import profile from "../img/profile.jpg";
 import CardPerfil from "../components/CardPerfil";
-import BotonGeneral from "../components/BontonGeneral";
-
+import { viewProfile } from "../api/auth";
+import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 
 function Perfil() {
+    const [clienteData, setClienteData] = useState(null);
+    const { logout } = useAuth();
+    const navigate = useNavigate(); // Inicializa useNavigate
+
+    useEffect(() => {
+        const fetchClienteData = async () => {
+            try {
+                const response = await viewProfile();
+                setClienteData(response.data);
+            } catch (error) {
+                console.error("Error al obtener los datos del cliente", error);
+            }
+        };
+
+        fetchClienteData();
+    }, []);
+
+    // Función para redirigir al componente EditarUsuario con el ID del cliente en la URL
+    const handleEditClick = () => {
+        navigate(`/EditarUsuarioCliente?id=${clienteData.id_cliente}`);
+    };
+
     return (
         <main className="bgmain min-h-screen">
             <div className=" h-24">
-               
+
             </div>
             <div className="text-center text-white font-bold h-16 mt-16">
                 <h1 className="text-4xl">Mi Perfil</h1>
             </div>
             <div className="flex items-center h-40">
-                <img src={profile}  alt=""className=" rounded-3xl w-28 mx-auto block" />
+                <img src={profile} alt="" className=" rounded-3xl w-28 mx-auto block" />
             </div>
             <div className="text-center h-10 text-white font-semibold">
                 <p className="text-1xl">Datos Personales</p>
             </div>
             <div className="font-semibold">
-                <CardPerfil apartado="Nombre" nombre="Arias Estrella Jomar Alejandro" />
-                <CardPerfil apartado="Correo" nombre="eirajomar2003@gmail.com" />
-                <CardPerfil apartado="Dirección" nombre="Tierra Maya, Calle Cangrejo, Reg.101, Lt.09, Mz.56" />
-                <CardPerfil apartado="C.P." nombre="77532" />
-                <CardPerfil apartado="País" nombre="México" />
-                <CardPerfil apartado="Estado" nombre="Quintana Roo" />
-                <CardPerfil apartado="Fecha de Nacimiento" nombre="21-Junio-2003" />
-                <div className="text-center h-10 text-white font-semibold">
-                    <p className="text-1xl">Datos de Usuario</p>
-                </div>
-                <div className="font-semibold">
-                    <CardPerfil apartado="Nombre de Usuario" nombre="Jomarcitouwu" />
-                    <CardPerfil apartado="Contraseña" nombre="***********" />
-                </div>
+                <CardPerfil apartado="Nombre" nombre={clienteData?.nombre} />
+                <CardPerfil apartado="Correo" nombre={clienteData?.email} />
+                <CardPerfil apartado="Dirección" nombre={clienteData?.direccion} />
+                <CardPerfil apartado="Ciudad" nombre={clienteData?.ciudad} />
+                <CardPerfil apartado="País" nombre={clienteData?.pais} />
+                <CardPerfil apartado="Estado" nombre={clienteData?.estado} />
                 <div className="flex flex-row justify-center gap-5">
-                    <BotonGeneral link={'/EditarUsuario'} texto="Editar Datos" />
-                    <BotonGeneral texto="Log Out" />
-                </div>
-                <div>
-                    
+                    <BotonGeneralRealizarAccion texto="Editar Datos" onClick={handleEditClick} disabled={!clienteData}
+                    />
+                    <BotonGeneralRealizarAccion texto="Cerrar Session" onClick={logout} />
                 </div>
             </div>
         </main>

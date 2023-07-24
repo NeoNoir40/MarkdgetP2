@@ -187,6 +187,31 @@ const verifyToken = async (req, res) => {
 };
 
 
+const profile = (req, res) => {
+  const id = req.admin.id;
+
+  db.query(
+    'SELECT  nombre, email FROM administradores WHERE id_administrador = ?',
+    [id],
+    (error, resultados) => {
+      if (error) {
+        res.status(500).json({ error: 'Ocurrió un error al obtener el cliente' });
+      } else if (resultados.length === 0) {
+        res.status(404).json({ error: 'El cliente no fue encontrado' });
+      } else {
+        const cliente = resultados[0];
+        res.json({
+          nombre: cliente.nombre,
+          email: cliente.email,
+        });
+      }
+    }
+  );
+};
+
+
+
+
 
 const logout =(req,res) =>{
   // Eliminar la cookie que almacena el tokena
@@ -208,5 +233,6 @@ module.exports = {
   AuthReq,
   verifyToken,
   logout,
+  profile,
   
 };

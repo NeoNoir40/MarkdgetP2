@@ -156,11 +156,12 @@ const verifyToken = async (req, res) => {
     });
 };
 
+
 const profile = (req, res) => {
     const id = req.vendedor.id;
 
     db.query(
-        'SELECT nombre, email, descripcion FROM vendedor WHERE id_vendedor = ?',
+        'SELECT id_vendedor , nombre, email, descripcion FROM vendedor WHERE id_vendedor = ?',
         [id],
         (error, resultados) => {
             if (error) {
@@ -170,9 +171,33 @@ const profile = (req, res) => {
             } else {
                 const vendedor = resultados[0];
                 res.json({
+                    id_vendedor: vendedor.id_vendedor,
                     nombre: vendedor.nombre,
                     email: vendedor.email,
+                    contrasena: vendedor.contrasena,
                     descripcion: vendedor.descripcion
+                });
+            }
+        }
+    );
+};
+
+const contarProductos = (req, res) => {
+    const id = req.vendedor.id;
+    
+    db.query(
+        'SELECT count(id_producto) as cantidad_productos , id_vendedor FROM productos WHERE id_vendedor = ?',
+        [id],
+        (error, resultados) => {
+            if (error) {
+                res.status(500).json({ error: 'Ocurrió un error al obtener el vendedor y la cantidad de productos que le pertenecen' });
+            } else if (resultados.length === 0) {
+                res.status(404).json({ error: 'El vendedor no fue encontrado' });
+            } else {
+                const vendedor = resultados[0];
+                res.json({
+                    id_vendedor: vendedor.id_vendedor,
+                    cantidad_productos: vendedor.cantidad_productos
                 });
             }
         }
@@ -202,4 +227,5 @@ module.exports = {
     AuthReq,
     verifyToken,
     obtenerTodosLosVendedores,
+    contarProductos,
 };

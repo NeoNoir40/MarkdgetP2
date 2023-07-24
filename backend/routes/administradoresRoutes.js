@@ -6,6 +6,7 @@ const { loginSchema } = require('../schemas/auth.schema');
 
 router.get('/verify',administradoresController.verifyToken);
 // Obtener todos los administradores
+router.get('/profile',administradoresController.AuthReq,administradoresController.profile);
 
 router.get('/clientes',administradoresController.AuthReq,administradoresController.obtenerClientes); 
 
