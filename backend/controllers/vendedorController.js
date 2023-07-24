@@ -183,10 +183,10 @@ const profile = (req, res) => {
 };
 
 const contarProductos = (req, res) => {
-    const id = req.vendedor.id;
+    const id = req.params.id;
     
     db.query(
-        'SELECT count(id_producto) as cantidad_productos , id_vendedor FROM productos WHERE id_vendedor = ?',
+        'SELECT id_vendedor ,  count(id_producto) as cantidad_productos  FROM productos WHERE id_vendedor = ?',
         [id],
         (error, resultados) => {
             if (error) {
@@ -194,10 +194,10 @@ const contarProductos = (req, res) => {
             } else if (resultados.length === 0) {
                 res.status(404).json({ error: 'El vendedor no fue encontrado' });
             } else {
-                const vendedor = resultados[0];
+                const contProd = resultados[0];
                 res.json({
-                    id_vendedor: vendedor.id_vendedor,
-                    cantidad_productos: vendedor.cantidad_productos
+                    id_vendedor: contProd.id_vendedor,
+                    cantidad_productos: contProd.cantidad_productos
                 });
             }
         }

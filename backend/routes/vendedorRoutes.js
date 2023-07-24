@@ -8,7 +8,7 @@ router.get('/verify', vendedoresController.verifyToken);
 
 router.get('/profile', vendedoresController.AuthReq, vendedoresController.profile);
 
-router.get('/contar', vendedoresController.contarProductos);
+router.get('/contar/:id', vendedoresController.contarProductos);
 
 
 router.get('/', vendedoresController.obtenerTodosLosVendedores);
