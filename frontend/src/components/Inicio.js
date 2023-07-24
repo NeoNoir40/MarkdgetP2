@@ -1,6 +1,5 @@
 import React from "react";
-import Encabezado from "./Encabezado";
-import Footer from "./Footer";
+
 import img1 from '../img/img1.png';
 import img2 from '../img/img2.png';
 import img3 from '../img/img3.png';
@@ -12,7 +11,7 @@ function Inicio() {
     return (
         <div>
             <main className="bgmain min-h-screen ">
-                <Encabezado />
+               
                 <div>
 
                 </div>
@@ -27,6 +26,7 @@ function Inicio() {
                         <Link className="ml-5" to=""><img className="w-65" src={img4} alt="" /></Link>
                     </div>
                 </div>
+                
                 <div className="bg-white max-w-xl rounded-xl flex justify-center mt-20 mx-auto text-white" style={{ backgroundImage: `url(${imgbtn1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div >
                         <div >
@@ -47,7 +47,7 @@ function Inicio() {
                         </div>
                     </div>
                 </div>
-                <Footer />
+               
             </main>
         </div>
         

@@ -1,6 +1,6 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import ImagenVistaProducto from "../components/ImagneVistaProducto";
 import imagen from '../img/hardware.png';
 import VistaProductoPrincipal from "../components/VistaProductoPrincipal";
@@ -10,7 +10,7 @@ import BotonPagarEstatic from "../components/BotonPagarEstic";
 function VistaProducto({ TituloDescProducto, marca, color, descripcion }) {
     return (
         <div className="  ">
-            <Encabezado />
+            
             <div className=" min-h-screen">
 
                 <div className="  w-[1480px] h-[1000px]  ml-[250px] m-auto mt-10 flex  justify-center items-center">
@@ -48,7 +48,7 @@ function VistaProducto({ TituloDescProducto, marca, color, descripcion }) {
                 </div>
 
             </div>
-            <Footer />
+           
         </div>
     );
 }

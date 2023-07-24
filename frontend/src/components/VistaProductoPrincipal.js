@@ -5,7 +5,7 @@ function VistaProductoPrincipal({imagen}){
     return(
         <div className=" border h-[500px] w-[500px]  " >
         <div>
-        <img className="object-cover rounded-xl content-center m-14  " src={imagen}/>
+        <img className="object-cover rounded-xl content-center m-14  " alt="asdsa" src={imagen}/>
         </div>
     </div>
     );

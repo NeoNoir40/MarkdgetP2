@@ -12,7 +12,7 @@ router.get('/:id', productosCategoriasController.obtenerProductoCategoriaPorId);
 router.post('/', productosCategoriasController.crearProductoCategoria);
 
 // Actualizar una relación producto-categoria existente
-router.put('/:id', productosCategoriasController.actualizarProductoCategoria);
+router.patch('/:id', productosCategoriasController.actualizarProductoCategoria);
 
 // Eliminar una relación producto-categoria
 router.delete('/:id', productosCategoriasController.eliminarProductoCategoria);

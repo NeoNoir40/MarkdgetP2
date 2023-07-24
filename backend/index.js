@@ -7,7 +7,10 @@ const port = 3001;
 // Middleware
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:'http://localhost:3000',
+  credentials: true
+}));
 
 
 
@@ -19,14 +22,14 @@ const productosRoutes = require('./routes/productosRoutes');
 const productosCategoriasRoutes = require('./routes/productosCategoriasRoutes');
 const administradoresRoutes = require('./routes/administradoresRoutes');
 const clientesRoutes = require('./routes/clientesRoutes');
-const productosQueryRoute = require('./routes/productosQueryRoute');
+const vendedorRoutes = require('./routes/vendedorRoutes');
 
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/productosCategoriasRoutes', productosCategoriasRoutes);
 app.use('/api/administradores', administradoresRoutes);
 app.use('/api/clientes', clientesRoutes);
-app.use('/api/productosQuery', productosQueryRoute);
+app.use('/api/vendedor', vendedorRoutes);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hola mundo</h1>");

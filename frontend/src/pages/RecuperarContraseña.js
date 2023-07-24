@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import BotonGeneral from "../components/BontonGeneral";
 
 function RecuperContraseña(){
     return(
         <main>
-        <Encabezado />
+        
 
         <div className="min-h-screen flex justify-center items-center text-center">
 
@@ -28,7 +28,7 @@ function RecuperContraseña(){
                 </form>
             </div>
         </div>
-        <Footer/>
+        
     </main>
     );
 }

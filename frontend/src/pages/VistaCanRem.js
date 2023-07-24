@@ -1,13 +1,13 @@
 import React from "react";
-import Encabezado from "../components/Encabezado";
-import Footer from "../components/Footer";
+
+
 import CardVistaProdu from "../components/CardVistaProd";
 import imagen1 from '../img/car1.png';
 
 function VistaCanRem(){
     return(
         <>
-        <Encabezado/>
+        
         <div className=" min-h-screen">
         <CardVistaProdu
         imagen={imagen1}
@@ -52,7 +52,7 @@ function VistaCanRem(){
         enviar2={''}
         />
         </div>
-        <Footer/>
+        
         </>
     );
 }
