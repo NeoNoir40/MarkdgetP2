@@ -61,16 +61,9 @@ function PerfilVendedor() {
                     </div>
                 </div>
                 <div className="flex flex-row justify-center ">
-
                     <div className=" m-3">
                         <BotonGeneral
-                            texto={"Categorias"} link={'/CrearCategoria'}
-                        />
-                    </div>
-
-                    <div className=" m-3">
-                        <BotonGeneral
-                            texto={"Administrar productos"} link={'/AdministrarProductos'}
+                            texto={"Administrar productos"} link={'/EditarProductosVendedor'}
                         />
                     </div>
                     <div className=" m-3">

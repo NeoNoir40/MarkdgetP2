@@ -55,6 +55,7 @@ import LoginVendedor from './pages/LoginVendedor';
 import ProtectedRouteVendedor from './ProtectedRouteVendedor';
 import PerfilVendedor from './pages/PerfilVendedor';
 import EditarVendedorDefault from './pages/EditarVendedorDefault';
+import ProductosVendedor from './components/ProductosVendedor'
 function App() {
   return (
 
@@ -64,6 +65,7 @@ function App() {
         <Encabezado />
         <Routes>
           <Route path='/LoginVendedor' element={<LoginVendedor />}></Route>
+          <Route path='/EditarProductosVendedor' element={<ProductosVendedor/>}></Route>
           <Route path='/' element={<Inicio />} ></Route>
           <Route path='/LoginAdmin' element={<LoginAdmin />}></Route>
           <Route path='/Login' element={<Login />}></Route>
