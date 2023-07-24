@@ -9,12 +9,15 @@ import "pdfmake/build/pdfmake.min.js";
 import "pdfmake/build/vfs_fonts.js";
 import "datatables.net-buttons/js/buttons.html5.min.js";
 import "datatables.net-buttons/js/buttons.print.min.js";
+import { useNavigate } from "react-router-dom";
+import { viewCategoriasProductos , deleteProductoCategoria} from "../api/auth";
 
-import { viewCategoriasProductos } from "../api/auth";
 
 function CategoriasProductosTable() {
     const [CategoriasProductos, setCategoriaProducto] = useState([]);
     const tableRef = useRef(null);
+    const navigate = useNavigate(); // Utilizamos useNavigate en lugar de useHistory    
+
 
     useEffect(() => {
         const listaCategoriasProductos = async () => {
@@ -42,6 +45,25 @@ function CategoriasProductosTable() {
         }
     }, [CategoriasProductos]);
 
+    const handleEditarCategoriaProducto = (idCategoriaProducto) => {
+        // Redireccionar a la página de edición de productos con el idCategoriaProducto como parámetro
+        navigate(`/EditarCatProducto?id=${idCategoriaProducto}`);
+    };
+
+    const handleEliminarProductoCategoria = async (idCategoria) => {
+        try {
+            await deleteProductoCategoria(idCategoria);
+            alert("Relacion categoria producto eliminado correctamente");
+            
+            // Volver a cargar la lista de productos después de eliminar uno
+            const resultado = await viewCategoriasProductos();
+            setCategoriaProducto(resultado.data);
+        } catch (error) {
+            console.error("Error al eliminar la relacion categoria producto", error);
+        }
+    };
+
+
     return (
         <div>
             <div className="text-center flex justify-center mt-10 table-responsive">
@@ -51,18 +73,21 @@ function CategoriasProductosTable() {
                             <th className=" ">#</th>
                             <th className="">Nombre Producto</th>
                             <th className="">Nombre Categoria</th>
+                            <th className="">imagen_categoria</th>
                             <th className="">eliminar</th>
                             <th className="">upgrade</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {CategoriasProductos.map((CategoriasProducto, i) => (
+                        {CategoriasProductos.map((CategoriasProducto, i ) => (
                             <tr key={CategoriasProducto.id}>
-                                <td>{i ++}</td>
+                                <td>{i + 1}</td>
                                 <td>{CategoriasProducto.nombre_producto}</td>
                                 <td>{CategoriasProducto.nombre_categoria}</td>
-                                <td>delete</td>
-                                <td>upgrade</td>
+                                <td>{CategoriasProducto.imagen_categoria}</td>
+                                <td><button onClick={() => handleEliminarProductoCategoria(CategoriasProducto.id_producto_categoria)}>Editar</button></td>
+                                <td><button onClick={() => handleEditarCategoriaProducto(CategoriasProducto.id_producto_categoria)}>Eliminar</button></td>
+
                             </tr>
                         ))}
                     </tbody>

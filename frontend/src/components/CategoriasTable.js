@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
 import "datatables.net-bs5/js/dataTables.bootstrap5.min.js";
@@ -9,12 +10,13 @@ import "pdfmake/build/pdfmake.min.js";
 import "pdfmake/build/vfs_fonts.js";
 import "datatables.net-buttons/js/buttons.html5.min.js";
 import "datatables.net-buttons/js/buttons.print.min.js";
-
+import { EliminarCategoria } from "../api/auth";
 import { viewCategorias } from "../api/auth";
 
 function CategoriaTable() {
     const [Categorias, setCategoria] = useState([]);
     const tableRef = useRef(null);
+    const navigate = useNavigate(); // Utilizamos useNavigate en lugar de useHistory    
 
     useEffect(() => {
         const listaCategorias = async () => {
@@ -42,6 +44,24 @@ function CategoriaTable() {
         }
     }, [Categorias]);
 
+    const handleEditarCategoria = (idCategoria) => {
+        // Redireccionar a la página de edición de productos con el idCategoria como parámetro
+        navigate(`/EditarCategoria?id=${idCategoria}`);
+    };
+
+    const handleEliminarCategoria = async (idCategoria) => {
+        try {
+            await EliminarCategoria(idCategoria);
+            alert("Categoria eliminado correctamente");
+            
+            // Volver a cargar la lista de productos después de eliminar uno
+            const resultado = await viewCategorias();
+            setCategoria(resultado.data);
+        } catch (error) {
+            console.error("Error al eliminar la categoria", error);
+        }
+    };
+
     return (
         <div>
             <div className="text-center flex justify-center mt-10 table-responsive">
@@ -50,17 +70,19 @@ function CategoriaTable() {
                         <tr>
                             <th className=" ">#</th>
                             <th className="">Nombre</th>
+                            <th className="">Imagen</th>
                             <th className="">eliminar</th>
                             <th className="">upgrade</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {Categorias.map((categoria , i) => (
+                        {Categorias.map((categoria, i) => (
                             <tr key={categoria.id}>
-                                <td>{i ++}</td>
+                                <td>{i++}</td>
                                 <td>{categoria.nombre}</td>
-                                <td>delete</td>
-                                <td>upgrade</td>
+                                <td>{categoria.imagen_categoria}</td>
+                                <td><button onClick={() => handleEliminarCategoria(categoria.id_categoria)}>Eliminar</button></td>
+                                <td><button onClick={() => handleEditarCategoria(categoria.id_categoria)}>Editar</button></td>
                             </tr>
                         ))}
                     </tbody>

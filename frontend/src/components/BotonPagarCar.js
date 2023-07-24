@@ -3,7 +3,7 @@ import React from "react";
 import BotonGeneral from "./BontonGeneral";
 function BotonPagarCar({ cantidad, direccion, total }) {
     return (
-//transform translate-y-[-50%] 
+
         <div className="flex justify-end items-end">
         <div className="  right-0 top-1/2  fixed transform translate-y-[-50%]  w-60 h-72 bg-[#DFDFDF] mr-80 rounded-lg">
           <div className="border-solid border-[#780072] border-2 text-center rounded-lg text-[#9B03A8]">

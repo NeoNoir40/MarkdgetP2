@@ -40,7 +40,7 @@ function PerfilAdmin() {
                     
                     <div className=" m-3">
                         <BotonGeneral
-                            texto={"Administrar Vendedores"} link={'/Usuarios'}
+                            texto={"Administrar Vendedores"} link={'/AdministrarVendedores'}
                         />
                     </div>
 

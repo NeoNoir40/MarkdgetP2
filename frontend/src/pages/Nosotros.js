@@ -35,16 +35,16 @@ function Nosotros() {
                 <ul className="">
                     <li className="h-10">Wilberth Cahuich</li>
                     <img className="w-80 mx-auto block" src={wilberth} alt="Buiiild"/>
-                    <Link to="https://instagram.com/kawy40?igshid=MzRlODBiNWFlZA=="><box-icon name='instagram' type='logo' flip='vertical' animation='tada' color='#a21ca5'></box-icon></Link>
+                    <Link to="https://instagram.com/kawy40?igshid=MzRlODBiNWFlZA=="></Link>
                     <Link to=""><box-icon name='linkedin-square' type='logo' flip='vertical' animation='tada' color='#a21ca5' ></box-icon></Link>
                     <li className="h-10">Jose Coronado</li>
                     <img className="w-80 mx-auto block" src={coronado} alt=""/>
-                    <Link to="https://instagram.com/coronado_ja04?igshid=ZDc4ODBmNjlmNQ=="><box-icon name='instagram' type='logo' flip='vertical' animation='tada' color='#a21ca5'></box-icon></Link>
+                    <Link to="https://instagram.com/coronado_ja04?igshid=ZDc4ODBmNjlmNQ=="></Link>
                     <Link to=""><box-icon name='linkedin-square' type='logo' flip='vertical' animation='tada' color='#a21ca5' ></box-icon></Link>
                     <li className="h-10">Daniel Sánchez</li>
                     <img className="w-80 mx-auto block" src={dano} alt=""/>
-                    <Link to="https://instagram.com/danoel.024?igshid=MzRlODBiNWFlZA=="><box-icon name='instagram' type='logo' flip='vertical' animation='tada' color='#a21ca5'></box-icon></Link>
-                    <Link to=""><box-icon name='linkedin-square' type='logo' flip='vertical' animation='tada' color='#a21ca5' ></box-icon></Link>
+                    <Link to="https://instagram.com/danoel.024?igshid=MzRlODBiNWFlZA=="></Link>
+                    <Link to=""></Link>
                 </ul>
             </div>
             <div>

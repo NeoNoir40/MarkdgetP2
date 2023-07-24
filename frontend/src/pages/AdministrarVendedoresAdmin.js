@@ -1,10 +1,10 @@
 import React from "react";
 
 import IndicadorPag from "../components/PagIndicador";
-import CategoriasProductosTable from "../components/CategoriasProductos";
+import VendedoresTable from "../components/VendedoresTableCrud";
 import BotonGeneral from "../components/BontonGeneral";
 
-function AdministrarCategoriasProductosAdmin (){
+function AdministrarVendedoresAdmin (){
     return(
         <main className="min-h-screen">
         <div>
@@ -14,13 +14,14 @@ function AdministrarCategoriasProductosAdmin (){
 
             />
     <div>
-    <CategoriasProductosTable/>
+    <VendedoresTable/>
     </div>
+    
            
             
             <BotonGeneral
             texto={'Crear Categoria Producto'}
-            link={'/CreateCatProducto'}
+            link={'/CreateVendedor'}
             />
             
             
@@ -29,4 +30,4 @@ function AdministrarCategoriasProductosAdmin (){
     );
 }
 
-export default AdministrarCategoriasProductosAdmin;
+export default AdministrarVendedoresAdmin;

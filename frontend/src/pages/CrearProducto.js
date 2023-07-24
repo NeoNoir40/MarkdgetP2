@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion";
 import IndicadorPag from "../components/PagIndicador";
 import { useAuth } from "../context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 
 function CrearProducto() {
 
-    const { updateProducto } = useAuth();
+    const navigate = useNavigate();
+    const { newProducto } = useAuth();
     const [ ProductosDatos, setProductosDatos ] = useState({
         nombre: "",
         descripcion: "",
@@ -30,8 +31,10 @@ function CrearProducto() {
     const handleSumit = async (e) => {
         e.preventDefault();
         try {
-            await updateProducto(ProductosDatos);
+            await newProducto(ProductosDatos);
             alert("Producto creado correctamente");
+            console.log(ProductosDatos);
+            navigate("/AdminProd");
         } catch (error) {
             console.error("Error al crear el prodcuto ", error);
         }

@@ -39,11 +39,11 @@ function EditarProductos() {
     // Función para manejar el cambio de la imagen seleccionada por el usuario
     const handleImagenChange = (e) => {
         const file = e.target.files[0];
+        setPreviewImagen(URL.createObjectURL(file));
         setProductosDatos({
             ...ProductosDatos,
-            imagen: file,
+            imagen: file.name, // Guardar solo el nombre del archivo
         });
-        setPreviewImagen(URL.createObjectURL(file));
     };
 
     const HandleChange = (e) => {

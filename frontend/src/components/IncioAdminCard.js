@@ -9,11 +9,14 @@ import "pdfmake/build/pdfmake.min.js";
 import "pdfmake/build/vfs_fonts.js";
 import "datatables.net-buttons/js/buttons.html5.min.js";
 import "datatables.net-buttons/js/buttons.print.min.js";
-import { clientesView } from "../api/auth";
+import { useNavigate } from "react-router-dom";
+import { clientesView, deleteUsuario } from "../api/auth";
 
 function TablaClientes() {
   const [clientes, setClientes] = useState([]);
   const tableRef = useRef(null);
+  const navigate = useNavigate(); // Utilizamos useNavigate en lugar de useHistory    
+
 
   useEffect(() => {
     const listaClientes = async () => {
@@ -32,7 +35,7 @@ function TablaClientes() {
       $(tableRef.current).DataTable({
         buttons: {
           name: "danger",
-          buttons: ["copy", "csv","print"],
+          buttons: ["copy", "csv", "print"],
         },
         dom:
           '<"row"<"col-md-4"l><"col-md-4"B><"col-md-4"f>><"clear">t<"row"<"col-md-6"i><"col-md-6"p>>',
@@ -40,6 +43,26 @@ function TablaClientes() {
       });
     }
   }, [clientes]);
+
+
+  const handleEditarCliente = (idUsuario) => {
+    // Redireccionar a la página de edición de productos con el idUsuario como parámetro
+    navigate(`/EditarUsuario?id=${idUsuario}`);
+};
+
+
+
+  const handleEliminarUsuario = async (idUsuario) => {
+    try {
+      await deleteUsuario (idUsuario);
+      alert("cliente eliminado correctamente");
+
+      const resultado = await clientesView();
+      setClientes(resultado.data);
+    } catch (error) {
+      console.log("Error al eliminar el cliente", error);
+    }
+  };
 
   return (
     <div>
@@ -60,9 +83,9 @@ function TablaClientes() {
             </tr>
           </thead>
           <tbody className="">
-            {clientes.map((cliente) => (
+            {clientes.map((cliente, i) => (
               <tr key={cliente.id}>
-                <td className="">{cliente.id}</td>
+                <td className="">{i + 1}</td>
                 <td className="">{cliente.nombre}</td>
                 <td className="">{cliente.email}</td>
                 <td className="">{cliente.contrasena}</td>
@@ -70,8 +93,8 @@ function TablaClientes() {
                 <td className="">{cliente.ciudad}</td>
                 <td className="">{cliente.estado}</td>
                 <td className="">{cliente.pais}</td>
-                <td className="">delete</td>
-                <td className="">upgrade</td>
+                <td><button onClick={() => handleEliminarUsuario(cliente.id_cliente)}>Eliminar</button></td>
+                <td><button onClick={() =>  handleEditarCliente (cliente.id_cliente)}>Editar</button></td>
               </tr>
             ))}
           </tbody>
