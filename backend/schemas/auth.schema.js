@@ -16,3 +16,13 @@ const loginSchema = z.object({
 });
 
 module.exports = { registerSchema, loginSchema };
+
+
+const registerVendedorSchema = z.object({
+    nombre: z.string({ required_error: 'Usuario obligatorio'}),
+    email: z.string({ required_error: 'Email obligatorio' }).email({ required_error: 'Email inválido' }),
+    contrasena: z.string({ required_error: 'Contrasena obligatorio' }).min(8, { message: 'La contraseña debe tener al menos 8 caracteres' }),
+});
+
+
+module.exports = { registerSchema, loginSchema , registerVendedorSchema};

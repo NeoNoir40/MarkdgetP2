@@ -94,7 +94,7 @@ const login = (req, res) => {
 
         res.cookie('token', token);
 
-         
+
         res.json({ mensaje: 'Inicio de sesión exitoso de cliente', token: token });
       } else {
         res.status(401).json({ error: 'Contraseña incorrecta' });
@@ -121,9 +121,10 @@ const AuthReq = (req, res, next) => {
     next();
   });
 };
+
 const verifyToken = async (req, res) => {
   const { token } = req.cookies;
-  if (!token) return res.json({authenticated: false});
+  if (!token) return res.json({ authenticated: false });
 
   jwt.verify(token, tokenSecret, async (error, user) => {
     if (error) return res.sendStatus(401);
@@ -179,7 +180,7 @@ const profile = (req, res) => {
 
 
 
-const logout =(req,res) =>{
+const logout = (req, res) => {
   // Eliminar la cookie que almacena el token
   res.clearCookie('token');
 
@@ -197,5 +198,5 @@ module.exports = {
   profile,
   AuthReq,
   verifyToken,
-  
+
 };

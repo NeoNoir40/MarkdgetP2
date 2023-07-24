@@ -13,11 +13,11 @@ router.post('/',validateSchema(registerSchema), clientesController.crearCliente)
 // Obtener todos los clientes
 
 // Obtener un cliente por su ID
-router.get('/:id',clientesController.AuthReq, clientesController.obtenerClientePorId); 
+router.get('/:id', clientesController.obtenerClientePorId); 
 // Actualizar un cliente existente
-router.put('/:id', clientesController.AuthReq,clientesController.actualizarCliente); 
+router.patch('/:id', clientesController.actualizarCliente); 
 // Eliminar un cliente
-router.delete('/:id',clientesController.AuthReq, clientesController.eliminarCliente); 
+router.delete('/:id', clientesController.eliminarCliente); 
 // Ruta para el login de clientes
 router.post('/login',validateSchema(loginSchema), clientesController.login);
 
