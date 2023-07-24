@@ -1,14 +1,8 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import CirculoCategoria from "../components/CirculoCategoria";
-import celular from '../img/celular.png';
-import laptop from '../img/laptop.png';
-import monitor from '../img/monitor.webp';
-import tablet from '../img/tablet.png';
-import hardware from '../img/hardware.png';
-import auricular from '../img/auricular.png';
-import smartwatch from '../img/smartwatch.png';
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CardProdu from "../components/CardProdu";
 import gtneo from '../img/gtneo.webp';
@@ -20,41 +14,93 @@ import CardOfert from "../components/CardOfert";
 import pc from "../img/pc.avif";
 import gaming from "../img/gaming.webp"
 import IndicadorPag from "../components/PagIndicador";
+import axios from "axios";
+import Carousel from "../components/Carousel";
 
 function Productos() {
+
+    const [categorias, setCategorias] = useState([])
+
+    useEffect(function () {
+        axios
+            .get("http://localhost:3001/api/categorias")
+            .then(function (datos) {
+                setCategorias(datos.data);
+            })
+            .catch(() => {
+                console.error("Hay un error")
+            });
+    }, []);
+
+    const [productosCategorias, setproductosCategorias] = useState([])
+
+    useEffect(function () {
+        axios
+            .get("http://localhost:3001/api/productosCategoriasRoutes")
+            .then(function (datos) {
+                setproductosCategorias(datos.data);
+            })
+            .catch(() => {
+                console.error("Hay un error")
+            });
+    }, []);
+
     return (
 
         <main className="bgmain min-h-screen">
-            
+            <Encabezado />
             <div className="min-h-screen">
-                <div className="text-center mb-4 mt-4">
+                <div className="text-center mb-4 mt-4">x
                     <IndicadorPag
                         TituloIndc={"Categorias"} />
                 </div>
-                <div className="ml-12 h-60 flex mx-auto gap-5  justify-center">
-                    <Link to="/CategoriaCelular"><CirculoCategoria imagen={celular} categoria="Celulares" /></Link>
-                    <Link to="/CategoriaLaptop"><CirculoCategoria imagen={laptop} categoria="Laptops" /></Link>
-                    <Link to="/CategoriaMonitores"><CirculoCategoria imagen={monitor} categoria="Monitores" /></Link>
-                    <Link to="/CategoriaHardware"><CirculoCategoria imagen={hardware} categoria="Hardware" /></Link>
-                    <Link to="/CategoriaTablet"><CirculoCategoria imagen={tablet} categoria="Tablets" /></Link>
-                    <Link to="/CategoriaAuricular"><CirculoCategoria imagen={auricular} categoria="Auriculares" /></Link>
-                    <Link to="/CategoriaSmartwatch"><CirculoCategoria imagen={smartwatch} categoria="Smartwatchs" /></Link>
+                <div className="ml-12 h-60 flex mx-auto gap-5  justify-center flex-row">
+                    {categorias.map(function (categoria) {
+                        return (
+                            <Link to={categoria.enlace}><CirculoCategoria
+                                key={categoria.id_categoria}
+                                categoria={categoria.nombre}
+                                img={categoria.image_cat}
+                            /></Link>
+                        )
+                    })}
                 </div>
-                <div className="text-semibold gap-12 mx-auto flex justify-center h-96">
-                    <CardProdu imagen={gtneo} producto="Realme GT Neo 3" descripcion="150W Dual SIM 256GB Negro 12GB RAM" precio="4,750.00" />
-                    <CardProdu imagen={a23} producto="Samsung A23" descripcion="128GB 4GB RAM Color Azul" precio="4,099.99" />
-                    <CardProdu imagen={laptogam} producto="Laptop LENOVO" descripcion="256GB 8GB RAM Intel Core i7 7thGen" precio="24,500.00" />
-                    <CardProdu imagen={audinal} producto="Audifonos STF" descripcion="Audífonos Inalámbricos STF 12 Negros" precio="200.00" />
-                    <CardProdu imagen={memddr4} producto="Memoria RAM DDR4" descripcion="16GB 3600MHz COrsair Vengeance RGB Pro" precio="1,479.00" />
-                </div>
+
                 <div className="flex flex-row gap-20 mx-auto justify-center">
                     <CardOfert text="¡30% DE DESCUENTO EN ARTÍCULOS DE COMPUTADORA!" imagen={pc} />
                     <CardOfert text="¡10% DE DESCUENTO EN ARTÍCULOS GAMING" imagen={gaming} />
                 </div>
+
+                <div className="flex flex-row">
+                    <div className=" carousel p-4 flex items-center justify-start overflow-x-auto scroll-smooth">
+                        <div className="text-semibold gap-12 mx-auto flex flex-row justify-center h-96">
+                            {productosCategorias.map(function (producto_categoria) {
+                                return (
+                                    <CardProdu
+                                        key={producto_categoria.id_producto_categoria}
+                                        imagen={producto_categoria.imagen}
+                                        categoria={producto_categoria.categoria}
+                                        producto={producto_categoria.nombre}
+                                        precio={producto_categoria.precio}
+                                        stock={producto_categoria.stock}
+                                    />
+                                )
+                            })}
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
             </div>
-            
+
+            <Footer />
         </main>
-    );
+    )
 }
+
 
 export default Productos;

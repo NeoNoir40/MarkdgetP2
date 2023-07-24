@@ -1,45 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardProdu from "../components/CardProdu";
-
-
-import moni1 from "../img/moni1.webp";
-import moni2 from "../img/moni2.avif";
-import moni3 from "../img/moni3.webp";
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
+import axios from "axios";
 
 function CategoriaMonitores(){
+
+    const [prodMonitores, setprodMonitores] = useState([])
+
+    useEffect(function() {
+        axios
+        .get("http://localhost:3001/api/productosQuery/cuatro")
+        .then(function(datos){
+            setprodMonitores(datos.data)
+        })
+        .catch(() => {
+            console.error("Hay un error")
+        });
+    },[]);
+
     return(
         <div>
             <div className="h-24">
-                
+                <Encabezado/>
             </div>
             <div className="text-center text-white text-3xl h-16">
                 <h1>Monitores</h1>
-            </div> 
+            </div>
             <div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Monitor ViewSonic" descripcion="Monitor de 27plg de 240Hz" imagen={moni1} precio="1,599.99" />
-            <CardProdu producto="Monitor ViewSonic" descripcion="Monitor de 27plg de 240Hz" imagen={moni1} precio="1,599.99" />
-            <CardProdu producto="Monitor ViewSonic" descripcion="Monitor de 27plg de 240Hz" imagen={moni1} precio="1,599.99" />
-            <CardProdu producto="Monitor ViewSonic" descripcion="Monitor de 27plg de 240Hz" imagen={moni1} precio="1,599.99" />
-            <CardProdu producto="Monitor ViewSonic" descripcion="Monitor de 27plg de 240Hz" imagen={moni1} precio="1,599.99" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row h-96">
-            <CardProdu producto="Monitor Odyssey G6" descripcion="Monitor Gamer FullHD a 240Hz" imagen={moni2} precio="1,450.00" />
-            <CardProdu producto="Monitor Odyssey G6" descripcion="Monitor Gamer FullHD a 240Hz" imagen={moni2} precio="1,450.00" />
-            <CardProdu producto="Monitor Odyssey G6" descripcion="Monitor Gamer FullHD a 240Hz" imagen={moni2} precio="1,450.00" />
-            <CardProdu producto="Monitor Odyssey G6" descripcion="Monitor Gamer FullHD a 240Hz" imagen={moni2} precio="1,450.00" />
-            <CardProdu producto="Monitor Odyssey G6" descripcion="Monitor Gamer FullHD a 240Hz" imagen={moni2} precio="1,450.00" />
-            </div>
-            <div className="text-semibold gap-12 mx-auto flex justify-center flex-row">
-            <CardProdu producto="Monitor BENQ" descripcion="Monitor Gaming de resolución 1080p" imagen={moni3} precio="1,799.99" />
-            <CardProdu producto="Monitor BENQ" descripcion="Monitor Gaming de resolución 1080p" imagen={moni3} precio="1,799.99" />
-            <CardProdu producto="Monitor BENQ" descripcion="Monitor Gaming de resolución 1080p" imagen={moni3} precio="1,799.99" />
-            <CardProdu producto="Monitor BENQ" descripcion="Monitor Gaming de resolución 1080p" imagen={moni3} precio="1,799.99" />
-            <CardProdu producto="Monitor BENQ" descripcion="Monitor Gaming de resolución 1080p" imagen={moni3} precio="1,799.99" />
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
+            {prodMonitores.map(function(monitores){
+                return(
+                    <CardProdu
+                    key={monitores.id_producto_categoria}
+                    producto={monitores.producto}
+                    imagen={monitores.imagen}
+                    precio={monitores.precio}
+                    stock={monitores.stock}
+                    />
+                )
+            })}
             </div>
             </div>
             <div>
-               
+                <Footer/>
             </div>
         </div>
     )
