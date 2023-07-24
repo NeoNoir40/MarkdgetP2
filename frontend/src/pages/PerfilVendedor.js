@@ -20,7 +20,7 @@ function PerfilVendedor() {
                 setVendedorData(response.data);
 
                 // Llama a la función ContarProductosVendedor para obtener la cantidad de productos del vendedor autenticado
-                const cantidadProductos = await ContarProductosVendedor(response.data.id_vendedor);
+                const cantidadProductos = await ContarProductosVendedor(response.data?.id_vendedor);
                 setCantidadProductos(cantidadProductos.cantidad_productos); // Accedemos al campo 'cantidad_productos' del resultado
             } catch (error) {
                 console.error("Error al obtener los datos del vendedor", error);
@@ -50,7 +50,7 @@ function PerfilVendedor() {
                             <span className="text-fuchsia-700"> <br /> Correo electrónico: </span><span className=" mr-5">{vendedorData?.email}</span>
                         </p>
                         <p className=" text-lg ml-5">
-                            <span className=" text-fuchsia-700"> <br /> Cantidad de productos: </span><span>{cantidadProductos.id_vendedor}</span>
+                            <span className=" text-fuchsia-700"> <br /> Cantidad de productos: </span><span>{cantidadProductos?.id_vendedor}</span>
                         </p>
                     </div>
                     <div className="bg-[#ffffff] w-96 h-96 rounded-2xl">

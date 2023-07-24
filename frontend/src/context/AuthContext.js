@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [vendedor, setVendedor] = useState(null);
   const [isAuthenticatedVendedor, setIsAuthenticatedVendedor] = useState(false);
-
+  const [isAuthenticatedSingUp, setIsAuthenticatedSingUp] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAuthenticatedAdmin, setIsAuthenticatedAdmin] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
       const res = await registerRequest(user);
       console.log(res.data);
       setUser(res.data);
-      setIsAuthenticated(true);
+      setIsAuthenticatedSingUp(true);
     } catch (error) {
       console.log(error.response);
       setErrors(error.response.data);
@@ -286,6 +286,7 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated,
         isAuthenticatedAdmin,
+        isAuthenticatedSingUp,
         isAuthenticatedVendedor,
         vendedor,
         errors,

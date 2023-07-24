@@ -7,12 +7,12 @@ import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion
 function Registro() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signup, isAuthenticated, errors: registerErrors } = useAuth();
+    const { signup, isAuthenticatedSingUp, errors: registerErrors } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isAuthenticated) navigate("/Login")
-    }, [isAuthenticated, navigate]);
+        if (isAuthenticatedSingUp) navigate("/Login")
+    }, [isAuthenticatedSingUp, navigate]);
 
     const onSubmit = handleSubmit(async (values) => {
         await signup(values)
