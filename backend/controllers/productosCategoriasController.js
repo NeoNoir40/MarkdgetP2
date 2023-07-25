@@ -15,7 +15,7 @@ const obtenerProductosCategorias = (req, res) => {
 const obtenerProductoCategoriaPorId = (req, res) => {
   const id = req.params.id;
 
-  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria WHERE pc.id_producto_categoria = ?', [id], (error, resultados) => {
+  db.query('SELECT productos_categorias.id_producto_categoria, productos.nombre, productos.descripcion, productos.precio, productos.imagen, productos.stock FROM productos_categorias INNER JOIN productos ON productos_categorias.id_producto = productos.id_producto WHERE productos_categorias.id_producto_categoria = ?;', [id], (error, resultados) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al obtener la relación producto-categoria' });
     } else if (resultados.length === 0) {

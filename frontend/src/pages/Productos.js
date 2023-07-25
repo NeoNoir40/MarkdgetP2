@@ -60,7 +60,7 @@ useEffect(function() {
                 <Link to={categoria.enlace}><CirculoCategoria
                 key={categoria.id_categoria}
                 categoria={categoria.nombre}
-                img={categoria.image_cat}
+                img={categoria.imagen_categoria}
                 /></Link>
                     )})}
                     </div>

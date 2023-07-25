@@ -10,7 +10,7 @@ function CategoriaMonitores(){
 
     useEffect(function() {
         axios
-        .get("http://localhost:3001/api/productosQuery/cuatro")
+        .get("http://localhost:3001/api/productosQuery/tres")
         .then(function(datos){
             setprodMonitores(datos.data)
         })
