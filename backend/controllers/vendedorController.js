@@ -164,7 +164,7 @@ const profile = (req, res) => {
     const id = req.vendedor.id;
 
     db.query(
-        'SELECT id_vendedor , nombre, email, descripcion FROM vendedor WHERE id_vendedor = ?',
+        'SELECT  vendedor.id_vendedor , vendedor.nombre , vendedor.email , vendedor.contrasena ,vendedor.descripcion , COUNT(id_producto) as TotalProductos FROM productos  INNER JOIN vendedor ON productos.id_vendedor = vendedor.id_vendedor WHERE vendedor.id_vendedor = ? ',
         [id],
         (error, resultados) => {
             if (error) {
@@ -178,47 +178,15 @@ const profile = (req, res) => {
                     nombre: vendedor.nombre,
                     email: vendedor.email,
                     contrasena: vendedor.contrasena,
-                    descripcion: vendedor.descripcion
+                    descripcion: vendedor.descripcion,
+                    cont: vendedor.TotalProductos
+                    
                 });
             }
         }
     );
 };
 
-const contarProductos = (req, res) => {
-    const id = req.params.id;
-    
-    db.query(
-        'SELECT id_vendedor ,  count(id_producto) as cantidad_productos  FROM productos WHERE id_vendedor = ?',
-        [id],
-        (error, resultados) => {
-            if (error) {
-                res.status(500).json({ error: 'Ocurrió un error al obtener el vendedor y la cantidad de productos que le pertenecen' });
-            } else if (resultados.length === 0) {
-                res.status(404).json({ error: 'El vendedor no fue encontrado' });
-            } else {
-                const contProd = resultados[0];
-                res.json({
-                    id_vendedor: contProd.id_vendedor,
-                    cantidad_productos: contProd.cantidad_productos
-                });
-            }
-        }
-    );
-};
-
-
-const obtenerProductosVendedores = (req,res) => {
-    const id =  req.params.id;
-
-    db.query('SELECT vendedor.nombre ,productos.nombre,  precio, imagen, stock FROM productos  INNER JOIN vendedor ON productos.id_vendedor = vendedor.id_vendedor WHERE vendedor.id_vendedor = ?',[id],(error, resultados) =>{
-      if(error){
-        res.status(501),json({error : 'Ocurrio un error al obtener las relacion vendedor-producto'});
-      }else{
-        res.json(resultados)
-      }
-    });
-  };
 
 
 const logout = (req, res) => {
@@ -230,7 +198,6 @@ const logout = (req, res) => {
 }
 
 module.exports = {
-    obtenerProductosVendedores,
     crearVendedor,
     obtenerVendedorPorId,
     actualizarVendedor,
@@ -241,5 +208,4 @@ module.exports = {
     AuthReq,
     verifyToken,
     obtenerTodosLosVendedores,
-    contarProductos,
 };

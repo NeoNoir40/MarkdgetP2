@@ -2,8 +2,13 @@ const express = require('express');
 const router = express.Router();
 const productosController = require('../controllers/productosController');
 
+
+
 // Ruta GET para obtener todos los productos
 router.get('/', productosController.obtenerProductos);
+
+router.get('/ProductosVendedor/:id', productosController.obtenerProductoPorIdVendedor);
+
 
 // Ruta GET para obtener un producto por su ID
 router.get('/:id', productosController.obtenerProductoPorId);

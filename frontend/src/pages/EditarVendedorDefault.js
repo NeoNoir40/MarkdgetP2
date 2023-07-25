@@ -78,15 +78,6 @@ function EditarVendedorDefault() {
                                 value={vendedorDatos.email || ""} // Handle initial state
                                 onChange={handleInputChange}
                             />
-                            <label className="mt-5">Contraseña</label>
-                            <input
-                                className="w-80 h-10 rounded-md text-black"
-                                type="password"
-                                placeholder="Contraseña"
-                                name="contrasena"
-                                value={undefined} // Handle initial state
-                                onChange={handleInputChange}
-                            />
                             <label className="mt-5">Dirección</label>
                             <input
                                 className="w-80 h-10 rounded-md text-black"

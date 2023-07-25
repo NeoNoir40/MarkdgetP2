@@ -30,6 +30,26 @@ const obtenerProductoPorId = (req, res) => {
   );
 };
 
+
+const obtenerProductoPorIdVendedor = (req, res) => {
+  const id = req.params.id;
+
+  db.query(
+    "SELECT * FROM productos WHERE id_vendedor = ?",
+    [id],
+    (error, resultados) => {
+      if (error) {
+        res.status(500).json({ error: "Error al obtener el producto" });
+      } else if (resultados.length === 0) {
+        res.status(404).json({ error: "Producto no encontrado" });
+      } else {
+        res.json(resultados);
+      }
+    }
+  );
+};
+
+
 // Controlador para crear un nuevo producto
 const crearProducto = (req, res) => {
   const { nombre, descripcion, precio, stock, imagen } = req.body;
@@ -108,4 +128,5 @@ module.exports = {
   actualizarProducto,
   eliminarProducto,
   AuthReq,
+  obtenerProductoPorIdVendedor
 };

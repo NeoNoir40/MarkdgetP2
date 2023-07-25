@@ -41,6 +41,7 @@ export const clientesView = async () => axios.get(`/administradores/clientes`);
 
 export const viewProductos = async () => axios.get(`/productos`);
 
+
 export const viewCategorias = async () => axios.get(`/categorias`);
 
 export const viewCategoriasProductos = async () => axios.get(`/productosCategoriasRoutes`);
@@ -66,10 +67,10 @@ export const CrearCategoria = async (categoria) => axios.post(`/categorias`, cat
 
 
 export const updateVendedorPorid = async (id, vendedor) => {
-    try{
+    try {
         const response = await axios.patch(`/vendedor/${id}`, vendedor);
         return response.data;
-    }catch (error) {
+    } catch (error) {
         throw error;
     }
 }
@@ -156,7 +157,7 @@ export const ContarProductosVendedor = async (id) => {
     try {
         const response = await axios.get(`/productos/cantidad/${id}`);
         return response.data;
-    }catch (error) {
+    } catch (error) {
         throw error;
     }
 }
@@ -171,6 +172,18 @@ export const getVendedorPorId = async (id) => {
     }
 };
 
+export const getProductosVendedorPorId = async (id) => {
+    try {
+        console.log("ID recibido en getProductosVendedorPorId:", id);
+        // Agrega este console.log
+        const response = await axios.get(`/productos/ProductosVendedor/${id}`);
+        console.log("Respuesta de la consulta:", response.data); // Agrega este console.log
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
 //OBTENER  POR ID
 
 

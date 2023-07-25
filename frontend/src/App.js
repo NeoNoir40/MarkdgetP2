@@ -56,6 +56,7 @@ import ProtectedRouteVendedor from './ProtectedRouteVendedor';
 import PerfilVendedor from './pages/PerfilVendedor';
 import EditarVendedorDefault from './pages/EditarVendedorDefault';
 import ProductosVendedor from './components/ProductosVendedor'
+import EditarProductosVendedor from './pages/EditarProductoVendedor';
 function App() {
   return (
 
@@ -64,8 +65,8 @@ function App() {
       <BrowserRouter>
         <Encabezado />
         <Routes>
+
           <Route path='/LoginVendedor' element={<LoginVendedor />}></Route>
-          <Route path='/EditarProductosVendedor' element={<ProductosVendedor/>}></Route>
           <Route path='/' element={<Inicio />} ></Route>
           <Route path='/LoginAdmin' element={<LoginAdmin />}></Route>
           <Route path='/Login' element={<Login />}></Route>
@@ -83,9 +84,10 @@ function App() {
 
           {/*Paginas protegiadas para el vendedor*/}
           <Route element={<ProtectedRouteVendedor />}>
-          <Route path='/PerfilVendedor' element={<PerfilVendedor/>}></Route>
-          <Route path='/EditVendedors' element={<EditarVendedorDefault/>}></Route>
-
+          <Route path='/ModificarProductoVendedor' element={<EditarProductosVendedor />}></Route>
+            <Route path='/EditarProductosVendedor' element={<ProductosVendedor />}></Route>
+            <Route path='/PerfilVendedor' element={<PerfilVendedor />}></Route>
+            <Route path='/EditVendedors' element={<EditarVendedorDefault />}></Route>
           </Route>
 
           {/*Paginas protegiadas para el administrador*/}
