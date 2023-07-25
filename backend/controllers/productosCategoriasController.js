@@ -3,7 +3,7 @@ const db = require('../db');
 
 // Obtener todas las relaciones productos-categorias
 const obtenerProductosCategorias = (req, res) => {
-  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria , pc.imagen AS imagen_categoria FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria', (error, resultados) => {
+  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria , pc.imagen AS imagen_categoria , precio , stock  FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria', (error, resultados) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al obtener las relaciones productos-categorias' });
     } else {
@@ -17,7 +17,7 @@ const obtenerProductosCategorias = (req, res) => {
 const obtenerProductoCategoriaPorId = (req, res) => {
   const id = req.params.id;
 
-  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria , pc.imagen AS imagen_categoria  FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria WHERE pc.id_producto_categoria = ?', [id], (error, resultados) => {
+  db.query('SELECT pc.id_producto_categoria, p.nombre AS nombre_producto, c.nombre AS nombre_categoria , pc.imagen AS imagen_categoria , precio , stock , descripcion FROM productos_categorias pc INNER JOIN productos p ON pc.id_producto = p.id_producto INNER JOIN categorias c ON pc.id_categoria = c.id_categoria WHERE pc.id_producto_categoria = ?', [id], (error, resultados) => {
     if (error) {
       res.status(500).json({ error: 'Ocurrió un error al obtener la relación producto-categoria' });
     } else if (resultados.length === 0) {

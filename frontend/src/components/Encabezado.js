@@ -8,9 +8,9 @@ function Encabezado() {
   const { isAuthenticated, logoutAdmin, logout, logoutVendedor, isAuthenticatedAdmin, isAuthenticatedVendedor } = useAuth();
 
   return (
-    <div>
-      <header className="text-white bghead gap-5 top-0 w-auto">
-        <nav>
+    <div className="">
+      <header className="text-white bghead gap-5 top-0 w-auto ">
+        <nav className="">
           <div>
             <div className="flex flex-row "></div>
 

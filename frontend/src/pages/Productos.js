@@ -65,38 +65,34 @@ function Productos() {
                     })}
                 </div>
 
+
+
+                <div className="grid grid-cols-4 gap-4">
+                    <div className="text-semibold gap-12 mx-auto flex flex-row justify-center min-h-96">
+                        {productosCategorias.map(function (producto_categoria) {
+                            return (
+                                <CardProdu
+                                    key={producto_categoria.id_producto_categoria}
+                                    id_producto_categoria={producto_categoria.id_producto_categoria}
+                                    producto={producto_categoria.nombre_producto}
+                                    categoria={producto_categoria.nombre_categoria}
+                                    imagen={producto_categoria.imagen_categoria}
+                                    precio={producto_categoria.precio}
+                                    stock={producto_categoria.stock}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+
+
                 <div className="flex flex-row gap-20 mx-auto justify-center">
                     <CardOfert text="¡30% DE DESCUENTO EN ARTÍCULOS DE COMPUTADORA!" imagen={pc} />
                     <CardOfert text="¡10% DE DESCUENTO EN ARTÍCULOS GAMING" imagen={gaming} />
                 </div>
-
-                <div className="flex flex-row">
-                    <div className=" carousel p-4 flex items-center justify-start overflow-x-auto scroll-smooth">
-                        <div className="text-semibold gap-12 mx-auto flex flex-row justify-center h-96">
-                            {productosCategorias.map(function (producto_categoria) {
-                                return (
-                                    <CardProdu
-                                        key={producto_categoria.id_producto_categoria}
-                                        imagen={producto_categoria.imagen}
-                                        categoria={producto_categoria.categoria}
-                                        producto={producto_categoria.nombre}
-                                        precio={producto_categoria.precio}
-                                        stock={producto_categoria.stock}
-                                    />
-                                )
-                            })}
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
             </div>
 
-        </main>
+        </main> 
     )
 }
 
