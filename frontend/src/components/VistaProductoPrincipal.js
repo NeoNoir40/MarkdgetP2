@@ -1,13 +1,26 @@
 import React from "react";
 
 
-function VistaProductoPrincipal({imagen}){
-    return(
-        <div className=" border h-[500px] w-[500px]  " >
+function VistaProductoPrincipal({ imagen, nombre, stock, descripcion, precio }) {
+    return (
         <div>
-        <img className="object-cover rounded-xl content-center m-14  " src={imagen}/>
+            <div className=" border h-[500px] w-[500px]  " >
+                <img className="object-cover rounded-xl content-center m-14  " src={imagen} />
+            </div>
+            <div>
+                <p>{nombre}</p>
+            </div>
+            <div>
+                <p>{descripcion}</p>
+            </div>
+            <div>
+                <p>{precio}</p>
+            </div>
+            <div>
+                <p>{stock}</p>
+            </div>
         </div>
-    </div>
+
     );
 }
 

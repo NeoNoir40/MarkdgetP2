@@ -1,7 +1,7 @@
 const db = require("../db");
 
 const obtenerProductosQuery = (req, res) => {
-    db.query("SELECT id_producto_categoria, productos.nombre AS producto, imagen, stock, categorias.nombre AS categoria, precio FROM productos_categorias INNER JOIN productos ON productos.id_producto = productos_categorias.id_producto INNER JOIN categorias ON categorias.id_categoria = productos_categorias.id_categoria WHERE categorias.id_categoria = 1;", (error, resultados) => {
+    db.query("SELECT id_producto_categoria, UPPER(SUBSTRING(productos.nombre, 1,30)) AS producto, imagen, stock, categorias.nombre AS categoria, precio FROM productos_categorias INNER JOIN productos ON productos.id_producto = productos_categorias.id_producto INNER JOIN categorias ON categorias.id_categoria = productos_categorias.id_categoria WHERE categorias.id_categoria = 1;", (error, resultados) => {
         if (error) {
             res.status(500).json({ error: "Error al obtener los productos" });
         } else {
