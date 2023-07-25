@@ -1,12 +1,12 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import BotonSec from "../components/BotonSecun";
 
 function PierdoTelef() {
     return (
         <>
-           
+            <Encabezado />
             <div className=" min-h-screen">
                 <p className=" text-2xl text-fuchsia-700 font-bold m-5 mt-20 ml-80">Si pierdo mi teléfono</p>
                 <div className=" ml-80">
@@ -29,7 +29,7 @@ function PierdoTelef() {
                     </div>
                 </div>
             </div>
-           
+            <Footer />
         </>
     );
 }

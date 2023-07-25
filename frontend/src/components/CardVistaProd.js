@@ -7,7 +7,7 @@ function CardVistaProdu({imagen, titulo, descripcion, enviar1, enviar2}) {
             <div className="">
                 <div className="bg-[#DFDFDF] h-44 max-w-3xl ml-60 mt-12 rounded-lg" >
                     <div className=" flex " >
-                        <div className="m-3">
+                        <div className="m-5">
                             <img className="  rounded-lg " src={imagen} alt="" />
                         </div>
                         <div className="mt-5">

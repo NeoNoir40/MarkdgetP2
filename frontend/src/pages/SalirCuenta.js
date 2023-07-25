@@ -1,12 +1,12 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import BotonSec from "../components/BotonSecun";
 
 function SalirCuenta(){
     return(
         <main>
-        
+        <Encabezado />
 
         <div className="min-h-screen flex justify-center items-center text-center">
 
@@ -22,7 +22,7 @@ function SalirCuenta(){
                 </form>
             </div>
         </div>
-       
+        <Footer/>
     </main>
     );
 }

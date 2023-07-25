@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {BiCaretLeftCircle,BiCaretRightCircle} from "react-icons/bi";
 import CardProdu from "./CardProdu";
+import gtneo from '../img/gtneo.webp';
+import a23 from '../img/a23.avif';
+import laptogam from '../img/laptogam.webp';
+import audinal from '../img/audinal.webp';
+import memddr4 from '../img/memddr4.png';
+import CardOfert from "./CardOfert";
+import pc from "../img/pc.avif";
+import gaming from "../img/gaming.webp"
 import axios from "axios";
 
 function Carousel () {
