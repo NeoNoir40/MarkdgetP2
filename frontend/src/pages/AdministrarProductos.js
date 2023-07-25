@@ -1,6 +1,6 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import IndicadorPag from "../components/PagIndicador";
 import CardAdminProducto from "../components/CardAdminProducto";
 import imagen1 from '../img/car1.png'
@@ -15,7 +15,7 @@ function AdministrarProductos() {
 
     <main>
       <div className="min-h-screen">
-       
+        <Encabezado />
         <div>
           <div className="text-center">
             <IndicadorPag TituloIndc={"Producto"} />
@@ -89,7 +89,7 @@ function AdministrarProductos() {
 
         </div>
       </div>
-      
+      <Footer />
     </main>
 
   );

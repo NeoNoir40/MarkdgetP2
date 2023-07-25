@@ -3,7 +3,7 @@ import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 
-function PerfilVendedor() {
+function Perfil_vendedor() {
     return (
         <main>
             <Encabezado />
@@ -40,14 +40,27 @@ function PerfilVendedor() {
                 </div>
             </div>
             <div className="flex flex-row justify-center ">
+
             <div className=" m-3">
                 <BotonGeneral
-                    texto={"Administrar productos"}
+                    texto={"Categorias"} link={'/CrearCategoria'}
+                />
+            </div>
+
+            <div className=" m-3">
+                <BotonGeneral
+                    texto={"Administrar productos"} link={'/AdministrarProductos'}
                 />
             </div>
             <div className=" m-3">
                 <BotonGeneral
                     texto={"Log out"}
+                />
+                </div>
+                <div className=" m-3">
+                <BotonGeneral
+                    texto={"Cambiar datos"} 
+                    link={'/EditarAdministrador'}
                 />
                 </div>
                 </div>
@@ -57,4 +70,4 @@ function PerfilVendedor() {
     );
 }
 
-export default PerfilVendedor;
+export default Perfil_vendedor;

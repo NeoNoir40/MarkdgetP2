@@ -1,116 +1,141 @@
-import { useForm } from 'react-hook-form';
-import { useAuth } from "../context/AuthContext";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import BotonGeneralRealizarAccion from "../components/BotonGeneralRealizarAccion";
+import React from "react";
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
+import BotonGeneral from "../components/BontonGeneral";
+import { useState } from "react";
+import axios from "axios";
 
 function Registro() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signup, isAuthenticated, errors: registerErrors } = useAuth();
-    const navigate = useNavigate();
+    const [nombre, setNombre] = useState("");
+    const [email, setEmail] = useState("");
+    const [direccion, setDireccion] = useState("");
+    const [ciudad, setCiudad] = useState("");
+    const [estado, setEstado] = useState("");
+    const [pais , setPais] = useState("");
+    const [contraseña, setContrasena] = useState("");
 
-    useEffect(() => {
-        if (isAuthenticated) navigate("/Login")
-    }, [isAuthenticated, navigate]);
+    const crearUser = () => {
+        
+        axios.get(`http://localhost:3001/api/clientes?email=${email}`)
+            .then(response => {
+                if (response.data.length === 0) {  
+                    alert("El correo electrónico ya está registrado");
+                } else {
+                    axios.post(`http://localhost:3001/api/clientes`, {
+                        nombre:nombre ,
+                        email: email,
+                        direccion: direccion,
+                        ciudad: ciudad,
+                        estado: estado,
+                        contrasena: contraseña,
+                        pais: pais
+                    })
+                    .then(() => {
+                        alert("Se registró correctamente");
+                        window.location.href = "/Login";
+                    })
+                    .catch(() => {
+                        alert("Hubo un error durante el registro");
+                    });
+                }
+            })
+            
 
-    const onSubmit = handleSubmit(async (values) => {
-        await signup(values)
-    })
+            
+
+
+    };
+    
 
     return (
         <main>
-
-
+            <Encabezado />
 
             <div className="min-h-screen flex justify-center items-center text-center">
 
                 <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg">
                     <h1 className="font-bold text-white "><box-icon name='user' color='#ffffff' ></box-icon>Registro</h1>
-                    {
-                        registerErrors.map((error, i) => (
-                            <div className="bg-red-500 p-2 text-white">
-                                {error}
-                            </div>
-                        ))
-                    }
-                    <form onSubmit={onSubmit}
-                    >
-
+                    <form action="" method="POST">
                         <div className="text-white flex flex-col ">
 
-                            <label className="mt-5">Nombre</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="text" placeholder="Ejemplo: MK@gmail.com"
-                                {...register('nombre', { required: true, })}
-                            />
-                            {
-                                errors.nombre && (
-                                    <p className="text-red-500 mt-5">Usuario Requerido!</p>
-                                )
-                            }
-                            <label className="mt-5 ">Correo Electrónico</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="email" placeholder="Ejemplo: MK@gmail.com"
-                                {...register('email', { required: true })}
-                            />
-                            {
-                                errors.email && (
-                                    <p className="text-red-500 mt-5">Email Requerido!</p>
-                                )
-                            }
-                            <label className="mt-5 ">Contraseña</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="password" placeholder="Contraseña"
-                                {...register('contrasena', { required: true })}
-                            />
-                            {
-                                errors.contrasena && (
-                                    <p className="text-red-500 mt-5">Contraseña Requerido!</p>
-                                )
-                            }
-                            <label className="mt-5 ">Dirección</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="text" placeholder="Ejemplo: calle: luna , mz0, cp1000"
-                                {...register('direccion', { required: true })}
-                            />
-                            {
-                                errors.direccion && (
-                                    <p className="text-red-500 mt-5">Dirección Requerido!</p>
-                                )
-                            }
-                            <label className="mt-5 ">Ciudad</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="text" placeholder="Ejemplo: Merida"
-                                {...register('ciudad', { required: true })}
-                            />
-                            {
-                                errors.ciudad && (
-                                    <p className="text-red-500 mt-5">Ciudad Requerido!</p>
-                                )
-                            }
-                            <label className="mt-5 ">Estado</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="text" placeholder="Ejemplo: Yucatan"
-                                {...register('estado', { required: true })}
-                            />
-                            {
-                                errors.estado && (
-                                    <p className="text-red-500 mt-5">Estado Requerido!</p>
-                                )
-                            }
+                            <label for="" className="mt-5">Nombre</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="text" name="nombre"  required placeholder="Ejemplo: MK@gmail.com"
 
-                            <label className="mt-5 ">Pais</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="text" placeholder="Ejemplo: Mexico"
-                                {...register('pais', { required: true })}
+                                onChange={(event) => {
+
+                                    setNombre(event.target.value);
+                                }}
+
                             />
-                            {
-                                errors.pais && (
-                                    <p className="text-red-500 mt-5">Pais Requerido!</p>
-                                )
-                            }
+
+                            <label for="email" className="mt-5 ">Correo Electrónico</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="email" name="email"  required placeholder="Ejemplo: MK@gmail.com"
+
+                                onChange={(event) => {
+
+                                    setEmail(event.target.value);
+                                }}
+
+                            />
+
+                            <label for="direccion" className="mt-5 ">Dirección</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="text" name="direccion"  required placeholder="Ejemplo: calle: luna , mz0, cp1000"
+
+                                onChange={(event) => {
+
+                                    setDireccion(event.target.value);
+                                }}
+
+                            />
+
+                            <label for="ciudad" className="mt-5 ">Ciudad</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="text" name="ciudad" required placeholder="Ejemplo: Merida"
+                                onChange={(event) => {
+
+                                    setCiudad(event.target.value);
+                                }}
+
+                            />
+
+                            <label for="estado" className="mt-5 ">Estado</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="text" name="estado"  required placeholder="Ejemplo: Yucatan"
+                                onChange={(event) => {
+
+                                    setEstado(event.target.value);
+                                }}
+
+                            />
+
+
+                            <label for="pais" className="mt-5 ">Pais</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="text" name="pais"  required placeholder="Ejemplo: Mexico"
+                                onChange={(event) => {
+
+                                    setPais(event.target.value);
+                                }}
+
+                            />
+
+                            <label for="contraseña" className="mt-5 ">Contraseña</label>
+                            <input className="w-80 h-10 rounded-md text-black" type="password" name="contrasena"  required placeholder="Contraseña"
+                                onChange={(event) => {
+
+                                    setContrasena(event.target.value);
+                                }}
+
+                            />
                         </div>
                         <div className="text-[#9B03A8] mt-4">
                         </div>
-                        <BotonGeneralRealizarAccion texto={"Registrarse"} type="submit" />
+
+                        
+
+                        <BotonGeneral texto={"Confirmar registro"} funcion={crearUser} link={''} type="submit"/>
                     </form>
                 </div>
             </div>
-
+            <Footer />
         </main>
     );
 }

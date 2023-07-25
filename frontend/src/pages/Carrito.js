@@ -1,6 +1,6 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import CardProducto from "../components/CardProducto";
 import BotonPagarCar from "../components/BotonPagarCar";
 import imagen1 from '../img/car1.png';
@@ -13,7 +13,7 @@ function Carrito() {
     return (
 
         <main >
-            
+            <Encabezado />
 
             <div className=" min-h-screen text-center ">
                 <IndicadorPag
@@ -72,7 +72,7 @@ function Carrito() {
 
                 </div>
             </div>
-           
+            <Footer />
         </main>
 
 

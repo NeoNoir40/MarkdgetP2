@@ -1,13 +1,13 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 import IndicadorPag from "../components/PagIndicador";
 
 function EditarAdministrador() {
     return (
         <main>
-            
+            <Encabezado />
             <div className="min-h-screen">
                 <div>
                     <div className="text-center mt-4">
@@ -35,7 +35,7 @@ function EditarAdministrador() {
                     </div>
                 </div>
             </div>
-          
+            <Footer />
         </main>
 
     );

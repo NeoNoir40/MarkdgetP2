@@ -1,13 +1,13 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import BotonGeneral from "../components/BontonGeneral";
 
 
 function CamCorreo(){
     return(
         <main>
-        
+        <Encabezado />
 
         <div className="min-h-screen flex justify-center items-center text-center">
 
@@ -26,7 +26,7 @@ function CamCorreo(){
                 </form>
             </div>
         </div>
-        
+        <Footer/>
     </main>
     );
 }

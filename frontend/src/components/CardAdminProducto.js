@@ -8,10 +8,10 @@ function CardAdminProducto({ imagen, marca, color, precio, nombre,linkVer ,linkE
         <div className="">   
             <div className="bg-[#DFDFDF] h-44 max-w-3xl ml-60 mt-12 rounded-lg" >
                 <div className="text-[] flex flex-row " >
-                    <div className="m-3"><Link to="">
+                    <div className="m-5"><Link to="">
                         <img className="  rounded-lg " src={imagen} alt="" /></Link>
                     </div>
-                    <div className=""><h1 className="text-[#780072] mt-5 text-xl">{nombre}</h1>
+                    <div className="mt-5"><h1 className="text-[#780072] mt-5 text-xl">{nombre}</h1>
                         <p >Marca: {marca}</p>
                         <p>Color: {color}</p>
                         <p>Precio: {precio} mxn</p></div>

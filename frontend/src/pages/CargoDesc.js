@@ -1,12 +1,12 @@
 import React from "react";
-
-
+import Encabezado from "../components/Encabezado";
+import Footer from "../components/Footer";
 import BotonSec from "../components/BotonSecun";
 
 function CargoDesc() {
     return (
         <>
-           
+            <Encabezado />
             <div className=" min-h-screen">
                 <p className=" text-2xl text-fuchsia-700 font-bold m-5 mt-20 ml-80">No reconozco un cargo</p>
                 <div className=" ml-80">
@@ -33,7 +33,7 @@ function CargoDesc() {
                     </div>
                 </div>
             </div>
-           
+            <Footer />
         </>
     );
 }

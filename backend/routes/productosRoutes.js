@@ -12,7 +12,7 @@ router.get('/:id', productosController.obtenerProductoPorId);
 router.post('/', productosController.crearProducto);
 
 // Ruta PUT para actualizar un producto existente
-router.patch('/:id', productosController.actualizarProducto);
+router.put('/:id', productosController.actualizarProducto);
 
 // Ruta DELETE para eliminar un producto
 router.delete('/:id', productosController.eliminarProducto);
