@@ -25,7 +25,7 @@ function Registro() {
 
             <div className="min-h-screen flex justify-center items-center text-center">
 
-                <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg">
+                <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg mt-5">
                     <h1 className="font-bold text-white "><box-icon name='user' color='#ffffff' ></box-icon>Registro</h1>
                     {
                         registerErrors.map((error, i) => (

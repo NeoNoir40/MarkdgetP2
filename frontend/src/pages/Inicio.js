@@ -52,7 +52,7 @@ function Inicio() {
                     <CuadroPromocion
                         titulo={"Registrate y aprovecha de los beneficios, !Hazlo ya!"}
                         imagenbtn={imgbtn1}
-                        texto={"Registrate"}
+                        texto={<Link to="/Registro" >Registrate!</Link>}
                     />
 
                     <CuadroPromocion

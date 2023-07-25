@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Nosotros from './pages/Nosotros';
-import Carrito from './pages/Carrito';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 import RecuperContraseña from './pages/RecuperarContraseña';
@@ -114,7 +113,6 @@ function App() {
           {/*Paginas Protegidas para el cliente*/}
           <Route element={<ProtectedRoute />}>
             <Route path='/EditarUsuarioCliente' element={<EditarUsuarioCliente />}></Route>
-            <Route path='/Carrito' element={<Carrito />}></Route>
             <Route path='/RecuperContraseña' element={<RecuperContraseña />}></Route>
             <Route path='/Perfil' element={<Perfil />}></Route>
             <Route path='/PasarelaPago' element={<PasarelaPago />}></Route>

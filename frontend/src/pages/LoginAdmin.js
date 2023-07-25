@@ -52,10 +52,6 @@ function LoginAdmin() {
                                 <p className="text-red-500 mt-5">Contraseña Requerido!</p>
                             )}
                         </div>
-                        <div className="text-[#9B03A8] mt-4">
-                            <Link to={'/Registro'}>Registrarse</Link>
-                            <Link className="ml-4" to={'/RecuperContraseña'}>Olvidó su contraseña</Link>
-                        </div>
                         <BotonGeneralRealizarAccion texto={"Inciar sesión como Administrador"} />
                     </form>
                 </div>

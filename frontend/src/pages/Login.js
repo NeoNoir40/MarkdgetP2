@@ -32,8 +32,8 @@ function Login() {
     return (
         <main>
             <div className="min-h-screen flex justify-center items-center text-center">
-                <div className="flex flex-col items-center bg-[#222222] p-8 rounded-lg">
-                    <h1 className="font-bold text-white "><BiSolidUser/>Iniciar Sesion</h1>
+                <div className="flex flex-col items-center  bg-[#222222] p-8 rounded-lg">
+                    <h1 className="font-bold text-white  "><BiSolidUser/>Iniciar Sesion</h1>
                     {signinErrors.map((error, i) => (
                         <div className="bg-red-500 p-2 text-white" key={i}>
                             {error}
@@ -42,7 +42,7 @@ function Login() {
                     <form onSubmit={onSubmit}>
                         <div className="text-white flex flex-col">
                             <label>Correo Electrónico</label>
-                            <input className="w-80 h-10 rounded-md text-black" type="email" placeholder="Ejemplo: MK@gmail.com" {...register('email', { required: true })} />
+                            <input className="w-80 h-10 rounded-md text-black " type="email" placeholder="Ejemplo: MK@gmail.com" {...register('email', { required: true })} />
                             {errors.email && (
                                 <p className="text-red-500 mt-5">Email Requerido!</p>
                             )}
@@ -52,11 +52,13 @@ function Login() {
                                 <p className="text-red-500 mt-5">Contraseña Requerido!</p>
                             )}
                         </div>
-                        <div className="text-[#9B03A8] mt-4">
+                        <div className="text-[#9B03A8] mt-4 text-center hover:scale-105 transition-all hover:contrast-125 hover:shadow-1xs">
                             <Link to={'/Registro'}>Registrarse</Link>
-                            <Link className="ml-4" to={'/RecuperContraseña'}>Olvidó su contraseña</Link>
                         </div>
                         <BotonGeneralRealizarAccion texto={"Inciar session"} />
+                        <div className="text-[#9B03A8] ml-auto mr-auto text-center hover:scale-105 transition-all hover:contrast-125 hover:shadow-1xs">
+                            <Link className="ml-4 " to={'/LoginVendedor'}>Inciar sesion vendedor</Link>
+                        </div>
                     </form>
                 </div>
             </div>

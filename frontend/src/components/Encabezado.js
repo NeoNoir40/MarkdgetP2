@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { BiHomeHeart } from "react-icons/bi";
 
 function Encabezado() {
-  const { isAuthenticated, logoutAdmin, logout, logoutVendedor,isAuthenticatedAdmin , isAuthenticatedVendedor } = useAuth();
+  const { isAuthenticated, logoutAdmin, logout, logoutVendedor, isAuthenticatedAdmin, isAuthenticatedVendedor } = useAuth();
 
   return (
     <div>
@@ -16,57 +16,80 @@ function Encabezado() {
 
             <div className="text-white bghead flex text-center flex-row items-center justify-center mt-2 ">
 
-              <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link to="/">
-                <BiHomeHeart />
-              </Link>Markdget
 
-              </h1>
 
               {isAuthenticated || isAuthenticatedAdmin || isAuthenticatedVendedor ? (
                 <>
                   {isAuthenticatedAdmin ? ( // Si es administrador, muestra el navbar de admin
                     <>
                       {/* Enlaces para usuarios administradores */}
-                      <Link to="/PerfilAdmin" className="text-white">
-                        Admin
+                      <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link>
+                        <BiHomeHeart />
+                      </Link>Markdget
+
+                      </h1>
+                      <Link to="/PerfilAdmin" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Dashboard
                       </Link>
-                      <Link to="/DashboardAdmin" className="text-white">
-                        Dashboard de Admin
+                      <Link to="/Usuarios" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Usuarios
                       </Link>
-                      <Link to="/" className="text-white" onClick={logoutAdmin}>
+                      <Link to="/AdministrarVendedores" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Vendedores
+                      </Link>
+                      <Link to="/CategoriasAdmin" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Categorias
+                      </Link>
+                      <Link to="/AdminProd" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Productos
+                      </Link>
+                      <Link to="/CategoriaProd" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
+                        Producto&Categoria
+                      </Link>
+                      <Link to="/" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:text-red-700" onClick={logoutAdmin}>
                         Logout
                       </Link>
                     </>
                   ) : isAuthenticatedVendedor ? ( // Si es vendedor, muestra el navbar de vendedor
                     <>
                       {/* Enlaces para vendedores */}
-                      <Link to="/PerfilVendedor" className="text-white">
+                      <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link >
+                        <BiHomeHeart />
+                      </Link>Markdget
+
+                      </h1>
+                      <Link to="/PerfilVendedor" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Vendedor
                       </Link>
                       {/* Agrega aquí los enlaces adicionales para el navbar de vendedor */}
-                      <Link to="/" className="text-white" onClick={logoutVendedor}   >
+                      <Link to="/" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" onClick={logoutVendedor}   >
                         Logout
                       </Link>
                     </>
                   ) : ( // Si no es administrador ni vendedor, muestra el navbar de cliente
                     <>
                       {/* Enlaces para usuarios clientes */}
-                      <Link to="/Perfil" className="text-white">
+                      <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link to="/">
+                        <BiHomeHeart />
+                      </Link>Markdget
+
+                      </h1>
+                      <Link to="/Perfil" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Perfil
                       </Link>
-                      <Link to="/Carrito" className="text-white">
+                      <Link to="/Carrito" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Carrito
                       </Link>
-                      <Link to="/Productos" className="text-white">
+                      <Link to="/Productos" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Productos
                       </Link>
-                      <Link to="/Ayuda" className="text-white">
+                      <Link to="/Ayuda" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Ayuda
                       </Link>
-                      <Link to="/Nosotros" className="text-white">
+                      <Link to="/Nosotros" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Nosotros
                       </Link>
-                      <Link to="/" className="text-white" onClick={logout}>
+                      <Link to="/" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl hover:text-red-900 " onClick={logout}>
                         Logout
                       </Link>
                     </>
@@ -75,29 +98,25 @@ function Encabezado() {
               ) : ( // Si no está autenticado, muestra el navbar para usuarios no autenticados
                 <>
                   {/* Enlaces para usuarios no autenticados */}
-                  <Link to="/Login" className="text-white">
+                  <h1 className="text-3xl flex text-center justify-center items-center mb-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl ">   <Link to="/">
+                    <BiHomeHeart />
+                  </Link>Markdget
+
+                  </h1>
+                  <Link to="/Login" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                     Iniciar Sesión
                   </Link>
-                  <Link to="/Carrito" className="text-white">
-                    Carrito
-                  </Link>
-                  <Link to="/Productos" className="text-white">
+                  <Link to="/Productos" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                     Productos
                   </Link>
-                  <Link to="/Ayuda" className="text-white">
+                  <Link to="/Ayuda" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                     Ayuda
                   </Link>
-                  <Link to="/Nosotros" className="text-white">
+                  <Link to="/Nosotros" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                     Nosotros
                   </Link>
                 </>
               )}
-
-
-
-              <form className="" method="get">
-                <input type="search" className="text-black ml-3 rounded-md" placeholder="Buscar"></input>
-              </form>
 
             </div>
             <div className="rectangulo bg-white h-1 flex items-center justify-between mt-2 mx-auto w-3/4"></div>

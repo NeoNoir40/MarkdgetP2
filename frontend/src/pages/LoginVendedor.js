@@ -52,11 +52,10 @@ function LoginVendedor() {
                                 <p className="text-red-500 mt-5">Contraseña Requerida!</p>
                             )}
                         </div>
-                        <div className="text-[#9B03A8] mt-4">
-                            <Link to={'/RegistroVendedor'}>Registrarse</Link>
-                            <Link className="ml-4" to={'/RecuperarContraseñaVendedor'}>Olvidó su contraseña</Link>
-                        </div>
                         <BotonGeneralRealizarAccion texto={"Iniciar sesión como Vendedor"} />
+                        <div className="text-[#9B03A8]  text-center hover:scale-105 transition-all hover:contrast-125 hover:shadow-1xs">
+                            <Link to={'/Login'}>Iniciar sesion cliente</Link>
+                        </div>
                     </form>
                 </div>
             </div>
