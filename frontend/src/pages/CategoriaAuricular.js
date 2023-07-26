@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Encabezado from "../components/Encabezado";
 import Footer from "../components/Footer";
 import CardProdu from "../components/CardProdu";
 import axios from "axios";
@@ -20,12 +21,10 @@ function CategoriaAuricular() {
 
     return(
         <div>
-            <div className="h-24">
-            </div>
             <div className="text-white text-center text-3xl h-16">
                 <h1>Auriculares</h1>
             </div>
-            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto  grid-cols-4">
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
             {prodAuricular.map(function(auricular){
                     return(
                         <CardProdu
@@ -37,8 +36,6 @@ function CategoriaAuricular() {
                         />
                     )
                 })}
-            </div>
-            <div>
             </div>
         </div>
     )

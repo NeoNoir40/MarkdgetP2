@@ -10,7 +10,7 @@ function AdministrarVendedoresAdmin (){
         <div>
             <IndicadorPag
             
-            TituloIndc={"Panel de administración de relacion productos categorias"}
+            TituloIndc={"Panel de Administracion de Vendedores"}
 
             />
     <div>
@@ -20,7 +20,7 @@ function AdministrarVendedoresAdmin (){
            
             
             <BotonGeneral
-            texto={'Crear Categoria Producto'}
+            texto={'Crear Vendedor'}
             link={'/CreateVendedor'}
             />
             

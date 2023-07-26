@@ -56,6 +56,7 @@ import PerfilVendedor from './pages/PerfilVendedor';
 import EditarVendedorDefault from './pages/EditarVendedorDefault';
 import ProductosVendedor from './components/ProductosVendedor'
 import EditarProductosVendedor from './pages/EditarProductoVendedor';
+import Pedidos from './components/Pedidos';
 function App() {
   return (
 
@@ -125,6 +126,7 @@ function App() {
             <Route path='/RoboCuenta' element={<RoboCuenta />}></Route>
             <Route path='/CargoDesc' element={<CargoDesc />}></Route>
             <Route path='/PierdoTelef' element={<PierdoTelef />}></Route>
+            <Route path='/Pedidos' element={<Pedidos />}></Route>
 
           </Route>
         </Routes>
