@@ -8,13 +8,14 @@ import {
 
 export const createOrder = async (req, res) => {
   try {
+    
     const order = {
       intent: "CAPTURE",
       purchase_units: [
         {
           amount: {
-            currency_code: "USD",
-            value: "105.70",
+            currency_code: "MXN",
+            value: "1000",
           },
         },
       ],
@@ -87,7 +88,7 @@ export const captureOrder = async (req, res) => {
 
     console.log(response.data);
 
-    res.redirect("/payed.html");
+    res.redirect("http://localhost:3000/");
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: "Internal Server error" });

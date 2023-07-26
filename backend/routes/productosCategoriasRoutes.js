@@ -17,4 +17,5 @@ router.patch('/:id', productosCategoriasController.actualizarProductoCategoria);
 // Eliminar una relación producto-categoria
 router.delete('/:id', productosCategoriasController.eliminarProductoCategoria);
 
+
 module.exports = router;

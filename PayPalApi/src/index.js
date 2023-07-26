@@ -8,7 +8,13 @@ import paymentRoutes from "./routes/payment.routes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+    {
+
+        origin:'http://localhost:3000',
+  credentials: true
+    }
+));
 app.use(morgan("dev"));
 
 app.use(paymentRoutes);

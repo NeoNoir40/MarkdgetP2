@@ -11,7 +11,7 @@ const obtenerProductos = (req, res) => {
   });
 };
 
-// Controlador para obtener un producto por su ID
+// Controlador para obtener unz producto por su ID
 const obtenerProductoPorId = (req, res) => {
   const id = req.params.id;
 

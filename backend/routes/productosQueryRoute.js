@@ -17,4 +17,6 @@ router.get('/seis', productosQueryController.obtenerProductosQuerySeis);
 
 router.get('/siete', productosQueryController.obtenerProductosQuerySiete);
 
+router.get('/vista', productosQueryController.obtenerProductosQueryVista);
+
 module.exports = router;
