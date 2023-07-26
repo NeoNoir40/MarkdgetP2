@@ -34,14 +34,14 @@ function ProductosAdmin() {
 
   useEffect(() => {
     if (tableRef.current && Productos.length > 0 && !$.fn.DataTable.isDataTable(tableRef.current)) {
-      $(tableRef.current).DataTable({
+      $(tableRef.current).DataTable({ 
         buttons: {
           name: "danger",
           buttons: ["copy", "csv","excel", "print"],
         },
         dom:
           '<"row"<"col-md-4"l><"col-md-4"B><"col-md-4"f>><"clear">t<"row"<"col-md-6"i><"col-md-6"p>>',
-        pageLength: 10, // Mostrar 10 registros por página
+        pageLength: 5, // Mostrar 10 registros por página
       });
     }
   }, [Productos]);

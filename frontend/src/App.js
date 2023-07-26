@@ -56,7 +56,8 @@ import PerfilVendedor from './pages/PerfilVendedor';
 import EditarVendedorDefault from './pages/EditarVendedorDefault';
 import ProductosVendedor from './components/ProductosVendedor'
 import EditarProductosVendedor from './pages/EditarProductoVendedor';
-import Pedidos from './components/Pedidos';
+import VistaPedido from './components/VistaPedidos';
+import CrearProductoVendedor from './pages/CrearProductoVendedor';
 function App() {
   return (
 
@@ -81,9 +82,11 @@ function App() {
           <Route path='/CategoriaTablet' element={<CategoriaTablet />}></Route>
           <Route path='/CategoriaAuricular' element={<CategoriaAuricular />}></Route>
           <Route path='/CategoriaSmartwatch' element={<CategoriaSmartwatch />}></Route>
+          <Route path='/Pedidos' element={<VistaPedido/>}></Route>
 
           {/*Paginas protegiadas para el vendedor*/}
           <Route element={<ProtectedRouteVendedor />}>
+          <Route path='/CreateVendedorVendedor' element={<CrearProductoVendedor/>}></Route>
           <Route path='/ModificarProductoVendedor' element={<EditarProductosVendedor />}></Route>
             <Route path='/EditarProductosVendedor' element={<ProductosVendedor />}></Route>
             <Route path='/PerfilVendedor' element={<PerfilVendedor />}></Route>
@@ -126,7 +129,7 @@ function App() {
             <Route path='/RoboCuenta' element={<RoboCuenta />}></Route>
             <Route path='/CargoDesc' element={<CargoDesc />}></Route>
             <Route path='/PierdoTelef' element={<PierdoTelef />}></Route>
-            <Route path='/Pedidos' element={<Pedidos />}></Route>
+            
 
           </Route>
         </Routes>

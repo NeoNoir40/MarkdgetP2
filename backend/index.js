@@ -16,6 +16,7 @@ app.use(cors({
 
 
 
+
 // Rutas
 const categoriasRoutes = require('./routes/categoriasRoutes');
 const productosRoutes = require('./routes/productosRoutes');

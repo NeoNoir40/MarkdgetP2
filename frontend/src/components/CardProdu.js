@@ -12,11 +12,11 @@ function CardProdu({
     return (
         <div className="ml-4 mr-4">
             <div className="hover:scale-105 inline-block transition-all hover:contrast-125 hover:shadow-1xl">
-                <Link to={`/VistaProducto?id=${id_producto_categoria}`}>
+                <Link to={`/VistaProducto?id=${id_producto_categoria}`}>    
                     {/* Envuelve toda la tarjeta con el enlace */}
                     <div className="bg-transparent rounded-[20px_20px_0px_0px] pt-2 object-cover border w-48 items-center justify-center max-w-2xl m-auto ">
                         <img
-                            className="w-50 h-40 object-cover rounded-xl justify-center mx-auto"
+                            className="object-cover rounded-xl justify-center mx-auto"
                             src={imagen}
                             alt={producto}
                         />

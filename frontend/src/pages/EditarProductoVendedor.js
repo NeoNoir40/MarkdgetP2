@@ -21,7 +21,7 @@ function EditarProductoVendedor() {
     });
 
 
-useEffect(() => {
+        useEffect(() => {
         const fetchVendedorData = async () => {
             try {
                 const response = await viewProfileVendedor();

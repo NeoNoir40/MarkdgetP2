@@ -12,6 +12,7 @@ function VistaProducto() {
     const [producto, setProducto] = useState(null);
     const location = useLocation();
     const idProductoCategoria = new URLSearchParams(location.search).get("id");
+    const idCategoria = new URLSearchParams(location.search).get("id");
 
     useEffect(() => {
         axios
@@ -24,6 +25,20 @@ function VistaProducto() {
             });
     }, [idProductoCategoria]);
     
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3001/api/productosQuery/seis/${idProductoCategoria}`)
+            .then((response) => {
+                setProducto(response.data);
+            })
+            .catch(() => {
+                console.error("Hay un error");
+            });
+    }, [idCategoria]);
+    
+
+
     const handlePagarClick = async () => {
         try {
             // Enviar los detalles del producto al servidor para crear una orden de pago en PayPal
@@ -81,7 +96,7 @@ function VistaProducto() {
                                     <br />
                                     <h1 className="font-bold text-[20px] text-[#9B03A8]">Realizar compra</h1>
                                     <p className="mt-3 text-black">Ir a paserala de pago</p>
-                                    <button onClick={handlePagarClick} className="bg-fuchsia-900 rounded-md mt-4 text-white mb-3 py-2 px-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" />
+                            <button onClick={handlePagarClick} className="bg-fuchsia-900 rounded-md mt-4 text-white mb-3 py-2 px-2 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl" > Pagar</button> 
                                 </div>
                             </div>
                         </div>

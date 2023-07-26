@@ -49,7 +49,6 @@ const obtenerProductoPorIdVendedor = (req, res) => {
   );
 };
 
-
 // Controlador para crear un nuevo producto
 const crearProducto = (req, res) => {
   const { nombre, descripcion, precio, stock, imagen } = req.body;

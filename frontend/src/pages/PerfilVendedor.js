@@ -54,9 +54,6 @@ function PerfilVendedor() {
                         <p className=" text-lg ml-5">
                             <span className="text-fuchsia-700"> <br /> Correo electrónico: </span><span className=" mr-5">{vendedorData?.email}</span>
                         </p>
-                        <p className=" text-lg ml-5">
-                            <span className=" text-fuchsia-700"> <br /> Cantidad de productos: </span><span>{vendedorData?.cont}</span>
-                        </p>
                     </div>
                     <div className="bg-[#ffffff] w-96 h-96 rounded-2xl">
                         <p className=" text-fuchsia-700 text-3xl ml-10 mt-5">Descripción</p>
@@ -81,6 +78,10 @@ function PerfilVendedor() {
                         <BotonGeneralRealizarAccion texto="Editar Datos" onClick={handleEditClick} disabled={!vendedorData}
                         />
                     </div>
+                    <div className=" m-3">
+                        <BotonGeneral texto={"Crear Producto"} link={'/CreateVendedorVendedor'}/>
+                    </div>
+                    
                 </div>
             </div>
 

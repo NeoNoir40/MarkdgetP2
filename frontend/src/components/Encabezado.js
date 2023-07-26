@@ -77,9 +77,6 @@ function Encabezado() {
                       <Link to="/Perfil" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Perfil
                       </Link>
-                      <Link to="/Carrito" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
-                        Carrito
-                      </Link>
                       <Link to="/Productos" className="text-white ml-3 hover:scale-105 transition-all hover:contrast-125 hover:shadow-2xl">
                         Productos
                       </Link>

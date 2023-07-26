@@ -8,6 +8,8 @@ function CategoriaAuricular() {
 
     const [prodAuricular, setprodAuricular] = useState([])
 
+
+    
     useEffect( function() {
         axios
         .get("http://localhost:3001/api/productosQuery/seis")
@@ -24,7 +26,8 @@ function CategoriaAuricular() {
             <div className="text-white text-center text-3xl h-16">
                 <h1>Auriculares</h1>
             </div>
-            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
+            <div className="ml-2">
+            <div className="text-semibold gap-12 mx-auto justify-center h-auto grid grid-cols-4">
             {prodAuricular.map(function(auricular){
                     return(
                         <CardProdu
@@ -36,6 +39,7 @@ function CategoriaAuricular() {
                         />
                     )
                 })}
+            </div>
             </div>
         </div>
     )

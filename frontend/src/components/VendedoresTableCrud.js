@@ -73,7 +73,6 @@ function VendedoresTable() {
                             <th className=" ">#</th>
                             <th className="">Nombre</th>
                             <th className="">Email</th>
-                            <th className="">Contraseña</th>
                             <th className="">descripcion</th>
                             <th className="">eliminar</th>
                             <th className="">upgrade</th>
@@ -85,7 +84,6 @@ function VendedoresTable() {
                                 <td className="">{i + 1}</td>
                                 <td className="">{vendedores.nombre}</td>
                                 <td className="">{vendedores.email}</td>
-                                <td className="">{vendedores.contrasena}</td>
                                 <td className="">{vendedores.descripcion}</td>
                                 <td><button onClick={() => handleEliminarVendedor(vendedores.id_vendedor)}>Eliminar</button></td>
                                 <td><button onClick={() =>  handleEditarVendedor (vendedores.id_vendedor)}>Editar</button></td>

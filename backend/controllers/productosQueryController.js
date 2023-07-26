@@ -80,6 +80,22 @@ const obtenerProductosQueryVista = (req, res) => {
         }
     });
 };
+const obtenerProductosQueryId = (req, res) => {
+    const id = req.params.id
+db.query(
+    "SELECT * FROM productos_categorias WHERE id_producto_categoria = ?",
+    [id],
+    (error, resultados) => {
+      if (error) {
+        res.status(500).json({ error: "Error al obtener el producto" });
+      } else if (resultados.length === 0) {
+        res.status(404).json({ error: "Producto no encontrado" });
+      } else {
+        res.json(resultados[0]);
+      }
+    }
+  );
+};
 
 module.exports = {
     obtenerProductosQuery,
@@ -90,4 +106,5 @@ module.exports = {
     obtenerProductosQuerySeis,
     obtenerProductosQuerySiete,
     obtenerProductosQueryVista,
+    obtenerProductosQueryId
 }

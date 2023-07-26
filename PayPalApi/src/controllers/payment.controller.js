@@ -24,7 +24,7 @@ export const createOrder = async (req, res) => {
         landing_page: "NO_PREFERENCE",
         user_action: "PAY_NOW",
         return_url: `${HOST}/capture-order`,
-        cancel_url: `${HOST}/cancel-payment`,
+        cancel_url: `http://localhost:3000/`,
       },
     };
 
@@ -88,11 +88,11 @@ export const captureOrder = async (req, res) => {
 
     console.log(response.data);
 
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:3000/Pedidos");
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: "Internal Server error" });
   }
 };
 
-export const cancelPayment = (req, res) => res.redirect("/");
+export const cancelPayment = (req, res) => res.redirect("/  ");

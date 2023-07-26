@@ -85,8 +85,8 @@ function CategoriasProductosTable() {
                                 <td>{CategoriasProducto.nombre_producto}</td>
                                 <td>{CategoriasProducto.nombre_categoria}</td>
                                 <td>{CategoriasProducto.imagen_categoria}</td>
-                                <td><button onClick={() => handleEditarCategoriaProducto(CategoriasProducto.id_producto_categoria)}>Eliminar</button></td>
-                                <td><button onClick={() => handleEliminarProductoCategoria(CategoriasProducto.id_producto_categoria)}>Editar</button></td>
+                                <td><button onClick={() => handleEditarCategoriaProducto(CategoriasProducto.id_producto_categoria)}>Editar</button></td>
+                                <td><button onClick={() => handleEliminarProductoCategoria(CategoriasProducto.id_producto_categoria)}>Eliminar</button></td>
 
                             </tr>
                         ))}

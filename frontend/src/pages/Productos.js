@@ -61,11 +61,12 @@ useEffect(function() {
     return (
 
         <main className="bgmain min-h-screen">
+            <div>
              <div className="text-center mb-4 mt-4">x
                     <IndicadorPag
                         TituloIndc={"Categorias"} />
                 </div>
-                <div className="ml-12 h-60 flex mx-auto gap-5  justify-center flex-row">
+                <div className="ml-12 h-60 flex mx-auto gap  grid-cols-4 justify-center flex-row">
                     {categorias.map(function (categoria){
                     return(
                 <Link to={categoria.enlace}><CirculoCategoria
@@ -77,35 +78,33 @@ useEffect(function() {
                     </div>
 
 <div className="flex flex-row gap-20 mx-auto justify-center">
-    <CardOfert text="¡30% DE DESCUENTO EN ARTÍCULOS DE COMPUTADORA!" imagen={pc}/>
+    <CardOfert text="¡30% DE DESCUENTO EN ARTÍCULOS DE COMPUTADORA!" imagen={laptogam}/>
     <CardOfert text="¡10% DE DESCUENTO EN ARTÍCULOS GAMING" imagen={gaming} />
 </div>
 
-    <div className="flex flex-row">
-        <div className=" carousel p-4 flex items-center justify-start overflow-x-auto scroll-smooth">
-        <div className="text-semibold gap-12 mx-auto flex flex-row justify-center h-96">
+    <div className="flex flex-row mt-10">
+        <div className="text-semibold gap-12 mx-auto justify-center h-auto grid grid-cols-4">
             {productosCategorias.map (function(producto_categoria) {
                 return(
                     <CardProdu
                     key={producto_categoria.id_producto_categoria}
                     id_producto_categoria={producto_categoria.id_producto_categoria}
-                    imagen={producto_categoria.imagen}
+                    imagen={producto_categoria.imagen_categoria}
                     categoria={producto_categoria.categoria}
-                    producto={producto_categoria.nombre}
+                    producto={producto_categoria.nombre_producto}
                     precio={producto_categoria.precio}
                     stock={producto_categoria.stock}
                     />
                 )
             })}
                 
-        </div>
         
     </div>
     
     
                     
                 </div>
-                
+                </div>
         </main>
     )
  }

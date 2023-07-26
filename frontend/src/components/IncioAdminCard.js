@@ -73,7 +73,6 @@ function TablaClientes() {
               <th className=" ">#</th>
               <th className="">Nombre</th>
               <th className="">Email</th>
-              <th className="">Contraseña</th>
               <th className="">Direccion</th>
               <th className="">Ciudad</th>
               <th className="">Estado</th>
@@ -88,7 +87,6 @@ function TablaClientes() {
                 <td className="">{i + 1}</td>
                 <td className="">{cliente.nombre}</td>
                 <td className="">{cliente.email}</td>
-                <td className="">{cliente.contrasena}</td>
                 <td className="">{cliente.direccion}</td>
                 <td className="">{cliente.ciudad}</td>
                 <td className="">{cliente.estado}</td>
