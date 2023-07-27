@@ -25,7 +25,7 @@ function CategoriaCelular(){
             <div className="text-white text-center text-3xl h-16">
                 <h1>Celulares</h1>
             </div>
-            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid-cols-4">
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
                 {prodCelular.map(function(celular){
                     return(
                         <CardProdu

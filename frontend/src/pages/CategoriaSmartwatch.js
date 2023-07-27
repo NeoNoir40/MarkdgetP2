@@ -26,7 +26,7 @@ function CategoriaSmartwatch(){
                 <h1>Smartwatch</h1>
             </div>
             <div>
-            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid-cols-4">
+            <div className="container text-semibold gap-8 mx-16 flex justify-center flex-row h-auto grid grid-cols-4">
             {prodSmartwatch.map(function(smartwatch){
                 return(
                     <CardProdu
