@@ -21,4 +21,6 @@ router.get('/vista', productosQueryController.obtenerProductosQueryVista);
 
 router.get('/:id', productosQueryController.obtenerProductosQueryId);
 
+router.get('/pedido/:id', productosQueryController.obtenerProductosQueryPedidoId);
+
 module.exports = router;

@@ -82,20 +82,39 @@ const obtenerProductosQueryVista = (req, res) => {
 };
 const obtenerProductosQueryId = (req, res) => {
     const id = req.params.id
-db.query(
-    "SELECT * FROM productos_categorias WHERE id_producto_categoria = ?",
-    [id],
-    (error, resultados) => {
-      if (error) {
-        res.status(500).json({ error: "Error al obtener el producto" });
-      } else if (resultados.length === 0) {
-        res.status(404).json({ error: "Producto no encontrado" });
-      } else {
-        res.json(resultados[0]);
-      }
-    }
-  );
+    db.query(
+        "SELECT * FROM productos_categorias WHERE id_producto_categoria = ?",
+        [id],
+        (error, resultados) => {
+            if (error) {
+                res.status(500).json({ error: "Error al obtener el producto" });
+            } else if (resultados.length === 0) {
+                res.status(404).json({ error: "Producto no encontrado" });
+            } else {
+                res.json(resultados[0]);
+            }
+        }
+    );
 };
+
+const obtenerProductosQueryPedidoId = (req, res) => {
+    const id = req.params.id
+    db.query(
+        "SELECT pedidos.id_pedido, pedidos.id_cliente, clientes.nombre, clientes.direccion, detalles_pedido.cantidad, detalles_pedido.precio_unitario FROM pedidos INNER JOIN clientes ON clientes.id_cliente = pedidos.id_cliente INNER JOIN detalles_pedido ON detalles_pedido.id_pedido = pedidos.id_pedido WHERE pedidos.id_pedido = ?;",
+        [id],
+        (error, resultados) => {
+            if (error) {
+                res.status(500).json({ error: "Error al obtener el producto" });
+            } else if (resultados.length === 0) {
+                res.status(404).json({ error: "Producto no encontrado" });
+            } else {
+                res.json(resultados[0]);
+            }
+        }
+    );
+};
+
+
 
 module.exports = {
     obtenerProductosQuery,
@@ -106,5 +125,6 @@ module.exports = {
     obtenerProductosQuerySeis,
     obtenerProductosQuerySiete,
     obtenerProductosQueryVista,
-    obtenerProductosQueryId
+    obtenerProductosQueryId,
+    obtenerProductosQueryPedidoId,
 }
